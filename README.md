@@ -927,7 +927,7 @@
                 </div>
             </div>
             <div class="apropos-image">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTaYVG_iCjqtC3bXEKrVyw1a1VUNpkA7fViw&s" alt="Photo de profil">
+                <img src="https://scontent-jnb2-1.xx.fbcdn.net/v/t39.30808-1/644523915_122112844461211419_2720542475291211040_n.jpg?stp=dst-jpg_s200x200_tt6&_nc_cat=110&ccb=1-7&_nc_sid=e99d92&_nc_ohc=ZDiZtqutSnsQ7kNvwHsR30U&_nc_oc=AdmLlJTpyyeOMNasNgWuisgyqQ3zrQAlqzkSfV-wTIv2-jv0ys-YNbRpO5Z3A_Y6ZeeOwtLWZ-A0OM9jlWK9EITK&_nc_zt=24&_nc_ht=scontent-jnb2-1.xx&_nc_gid=YkSlOepK-0agC9bA5ra-lw&_nc_ss=8&oh=00_AfvI_aJ4X3I_iUDGpBfg2dNL-TzR4GqKYElTIUR70YL2Ng&oe=69A9FCB6" alt="Photo de profil">
             </div>
         </div>
         <div class="wave-bg"></div>
