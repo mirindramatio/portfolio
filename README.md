@@ -2,892 +2,464 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <!-- Viewport optimisé pour mobile -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>Portfolio - RATIANARIVO Mirindra Matthieu</title>
+    <title>Portfolio - Matthieu RATIANARIVO</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #87CEEB 0%, #5F9EA0 100%);
+            background: linear-gradient(145deg, #e0f2fe 0%, #b4d6d6 100%);
             min-height: 100vh;
+            color: #1e293b;
             overflow-x: hidden;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 2rem;
         }
 
-        /* Animations globales améliorées */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(60px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInScale {
-            from {
-                opacity: 0;
-                transform: scale(0.8);
-            }
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        @keyframes slideInBlur {
-            from {
-                opacity: 0;
-                transform: translateX(-50px);
-                filter: blur(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-                filter: blur(0);
-            }
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(0px);
-            }
-            50% {
-                transform: translateY(-15px);
-            }
-            100% {
-                transform: translateY(0px);
-            }
-        }
-
-        @keyframes floatRotate {
-            0% {
-                transform: translateY(0px) rotate(0deg);
-            }
-            50% {
-                transform: translateY(-10px) rotate(2deg);
-            }
-            100% {
-                transform: translateY(0px) rotate(0deg);
-            }
-        }
-
-        @keyframes pulseGlow {
-            0% {
-                box-shadow: 0 0 0 0 rgba(135, 206, 235, 0.4);
-                transform: scale(1);
-            }
-            50% {
-                box-shadow: 0 0 20px 10px rgba(135, 206, 235, 0.2);
-                transform: scale(1.02);
-            }
-            100% {
-                box-shadow: 0 0 0 0 rgba(135, 206, 235, 0.4);
-                transform: scale(1);
-            }
-        }
-
-        @keyframes shimmer {
-            0% {
-                background-position: -200% 0;
-            }
-            100% {
-                background-position: 200% 0;
-            }
-        }
-
-        @keyframes rotateGradient {
-            0% {
-                transform: rotate(0deg) scale(1);
-            }
-            50% {
-                transform: rotate(180deg) scale(1.1);
-            }
-            100% {
-                transform: rotate(360deg) scale(1);
-            }
-        }
-
-        @keyframes borderPulse {
-            0%, 100% {
-                border-color: rgba(135, 206, 235, 0.3);
-            }
-            50% {
-                border-color: rgba(135, 206, 235, 0.8);
-            }
-        }
-
-        /* Header avec animation améliorée */
+        /* Header moderne */
         header {
-            background: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            background: rgba(255,255,255,0.85);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            backdrop-filter: blur(10px);
-            animation: slideDown 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        @keyframes slideDown {
-            from {
-                transform: translateY(-100%) rotateX(-90deg);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0) rotateX(0);
-                opacity: 1;
-            }
+            border-bottom: 1px solid rgba(255,255,255,0.5);
         }
 
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 5%;
+            padding: 0.8rem 5%;
             max-width: 1400px;
             margin: 0 auto;
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #2c3e50;
+            font-size: 1.3rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #1e3c4f, #2c5e6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             text-decoration: none;
-            transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .logo::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(135, 206, 235, 0.2), transparent);
-            animation: shimmer 3s infinite;
-        }
-
-        .logo::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: #87CEEB;
-            transform: scaleX(0);
-            transform-origin: right;
-            transition: transform 0.3s;
-        }
-
-        .logo:hover {
-            color: #87CEEB;
-            transform: scale(1.05);
-        }
-
-        .logo:hover::after {
-            transform: scaleX(1);
-            transform-origin: left;
+            letter-spacing: -0.5px;
+            transition: 0.3s;
         }
 
         .nav-links {
             display: flex;
-            gap: 2rem;
+            gap: 2.5rem;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: #2c3e50;
-            font-weight: 500;
-            transition: all 0.3s;
+            font-weight: 600;
+            color: #1e3c4f;
             position: relative;
+            padding-bottom: 4px;
         }
 
-        .nav-links a::before {
+        .nav-links a::after {
             content: '';
             position: absolute;
-            bottom: -5px;
-            left: 50%;
+            bottom: 0;
+            left: 0;
             width: 0;
-            height: 2px;
-            background: #87CEEB;
-            transition: all 0.3s;
-            transform: translateX(-50%);
+            height: 3px;
+            background: #3b8f9e;
+            border-radius: 2px;
+            transition: 0.3s;
         }
 
-        .nav-links a:hover {
-            color: #87CEEB;
-            transform: translateY(-2px);
-        }
-
-        .nav-links a:hover::before {
+        .nav-links a:hover::after {
             width: 100%;
         }
 
-        /* Sections avec animations d'entrée */
+        /* Sections */
         section {
-            padding: 100px 0;
             min-height: 100vh;
             display: flex;
             align-items: center;
-            opacity: 0;
-            animation: fadeInUp 1s cubic-bezier(0.215, 0.610, 0.355, 1) forwards;
+            padding: 100px 0;
             position: relative;
-            overflow: hidden;
         }
 
-        section::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            opacity: 0;
-            animation: rotateGradient 20s linear infinite;
-            pointer-events: none;
-        }
-
-        section:hover::before {
-            opacity: 0.5;
-        }
-
-        /* Accueil amélioré */
         #accueil {
-            text-align: center;
-            background: linear-gradient(135deg, rgba(135, 206, 235, 0.95), rgba(95, 158, 160, 0.9));
-            animation: fadeInScale 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            background: radial-gradient(circle at 80% 30%, rgba(146, 210, 230, 0.4), transparent 40%);
         }
 
         .hero h1 {
-            font-size: 3rem;
+            font-size: clamp(2rem, 5vw, 3.5rem);
             margin-bottom: 1rem;
-            color: #2c3e50;
-            animation: float 4s ease-in-out infinite;
-            text-shadow: 2px 2px 4px rgba(255,255,255,0.5);
+            background: linear-gradient(145deg, #1e3c4f, #205b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .hero p {
             font-size: 1.3rem;
-            color: #2c3e50;
-            max-width: 600px;
-            margin: 0 auto 2rem;
-            animation: fadeInUp 1s ease-out 0.3s both, float 5s ease-in-out 1s infinite;
-            font-weight: 500;
+            max-width: 700px;
+            color: #1e3c4f;
+            font-weight: 400;
+            margin-bottom: 2rem;
         }
 
         .btn {
             display: inline-block;
-            padding: 12px 30px;
-            background: linear-gradient(135deg, #5F9EA0, #4682B4);
+            padding: 1rem 2.5rem;
+            background: linear-gradient(145deg, #317f8c, #235f6b);
             color: white;
+            border-radius: 60px;
             text-decoration: none;
-            border-radius: 50px;
-            transition: all 0.3s;
-            font-weight: 500;
-            border: none;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-            animation: pulseGlow 3s infinite;
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.5s;
-            z-index: -1;
+            font-weight: 600;
+            box-shadow: 0 20px 30px -10px rgba(34, 98, 112, 0.4);
+            transition: 0.3s;
+            border: 1px solid rgba(255,255,255,0.3);
         }
 
         .btn:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 15px 30px rgba(135, 206, 235, 0.4);
-            animation: none;
+            transform: translateY(-6px);
+            box-shadow: 0 30px 40px -10px #1e5a67;
         }
 
-        .btn:hover::before {
-            left: 100%;
-        }
-
-        /* À propos amélioré */
+        /* À propos */
         #apropos {
-            background: linear-gradient(135deg, #B0E0E6, #E0FFFF);
-            position: relative;
+            background: rgba(255,250,240,0.5);
+            backdrop-filter: blur(8px);
         }
 
         .apropos-content {
             display: flex;
-            align-items: center;
             gap: 4rem;
+            align-items: center;
+            flex-wrap: wrap;
         }
 
         .apropos-text {
-            flex: 1;
-            animation: slideInBlur 1s ease-out;
+            flex: 2;
+            min-width: 300px;
         }
 
         .apropos-text h2 {
             font-size: 2.5rem;
+            color: #1e3c4f;
             margin-bottom: 1.5rem;
-            color: #2c3e50;
             position: relative;
-            display: inline-block;
         }
 
-        .apropos-text h2::after {
+        .apropos-text h2:after {
             content: '';
             position: absolute;
-            bottom: -10px;
             left: 0;
-            width: 50px;
-            height: 3px;
-            background: #5F9EA0;
-            animation: slideWidth 2s ease-in-out infinite;
-        }
-
-        .apropos-text h2::before {
-            content: '';
-            position: absolute;
             bottom: -10px;
-            right: 0;
-            width: 50px;
-            height: 3px;
-            background: #5F9EA0;
-            animation: slideWidth 2s ease-in-out 1s infinite;
-        }
-
-        @keyframes slideWidth {
-            0%, 100% {
-                width: 50px;
-            }
-            50% {
-                width: 100px;
-            }
+            width: 80px;
+            height: 4px;
+            background: #317f8c;
+            border-radius: 4px;
         }
 
         .apropos-text p {
-            color: #2c3e50;
-            margin-bottom: 1rem;
-            transition: all 0.3s;
-            position: relative;
-            padding-left: 0;
-            font-weight: 500;
-        }
-
-        .apropos-text p:hover {
-            transform: translateX(15px);
-            color: #5F9EA0;
-            padding-left: 10px;
-        }
-
-        .apropos-text p::before {
-            content: '→';
-            position: absolute;
-            left: -20px;
-            opacity: 0;
-            transition: all 0.3s;
-            color: #5F9EA0;
-        }
-
-        .apropos-text p:hover::before {
-            opacity: 1;
-            left: -10px;
+            margin: 1.2rem 0;
+            line-height: 1.7;
+            color: #1e3c4f;
+            font-weight: 450;
         }
 
         .skills {
             display: flex;
-            flex-wrap: wrap;
             gap: 1rem;
-            margin-top: 2rem;
+            flex-wrap: wrap;
+            margin: 2rem 0;
         }
 
         .skill {
-            background: rgba(255, 255, 255, 0.8);
-            padding: 10px 20px;
-            border-radius: 30px;
-            color: #2c3e50;
-            font-weight: 500;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            animation: fadeInUp 0.5s ease-out;
-            animation-fill-mode: both;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            border: 2px solid transparent;
-        }
-
-        .skill:nth-child(1) { animation-delay: 0.1s; }
-        .skill:nth-child(2) { animation-delay: 0.2s; }
-        .skill:nth-child(3) { animation-delay: 0.3s; }
-
-        .skill::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(95, 158, 160, 0.2);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-            z-index: 0;
+            background: white;
+            padding: 0.7rem 1.8rem;
+            border-radius: 40px;
+            font-weight: 600;
+            color: #1e4b59;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border: 1px solid #cbd5e1;
+            transition: 0.2s;
+            cursor: default;
         }
 
         .skill:hover {
-            transform: translateY(-8px) scale(1.1);
-            background: #5F9EA0;
+            background: #317f8c;
             color: white;
-            box-shadow: 0 10px 25px rgba(95, 158, 160, 0.5);
-            border-color: #4682B4;
-            animation: borderPulse 1.5s infinite;
-        }
-
-        .skill:hover::before {
-            width: 200px;
-            height: 200px;
+            border-color: #317f8c;
+            transform: scale(1.05);
         }
 
         .apropos-image {
             flex: 1;
-            display: flex;
-            justify-content: center;
-            animation: fadeInRight 1s ease-out;
+            min-width: 250px;
+            text-align: center;
         }
 
         .apropos-image img {
-            width: 80%;
-            max-width: 300px;
-            height: auto;
-            border-radius: 15px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            animation: floatRotate 5s ease-in-out infinite;
-            border: 3px solid transparent;
-            background: linear-gradient(white, white) padding-box,
-                        linear-gradient(135deg, #87CEEB, #5F9EA0) border-box;
+            width: 100%;
+            max-width: 350px;
+            border-radius: 30px 10px 30px 10px;
+            box-shadow: 0 30px 40px -15px #1e3c4f;
+            border: 4px solid white;
+            transition: 0.4s;
         }
 
         .apropos-image img:hover {
-            transform: scale(1.08) rotate(3deg);
-            box-shadow: 0 30px 60px rgba(135, 206, 235, 0.4);
+            border-radius: 10px 30px 10px 30px;
+            transform: rotate(2deg) scale(1.02);
         }
 
-        /* Contact amélioré avec effets de cartes */
+        /* Contact Cards */
         #contact {
-            background: linear-gradient(135deg, #87CEEB 0%, #5F9EA0 100%);
-            color: white;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        #contact::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 50%);
-            animation: rotateGradient 25s linear infinite;
-        }
-
-        #contact h2 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            position: relative;
-            z-index: 1;
-            animation: fadeInUp 1s ease-out;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-            color: #2c3e50;
-        }
-
-        .contact-content p {
-            color: #2c3e50;
-            font-weight: 500;
+            background: linear-gradient(145deg, #c3e0e5, #a7cfd5);
         }
 
         .contact-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            display: flex;
+            flex-wrap: wrap;
             gap: 2rem;
+            justify-content: center;
             margin: 3rem 0;
-            perspective: 1000px;
         }
 
         .contact-card {
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            padding: 2rem;
-            border-radius: 20px;
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            animation: fadeInScale 0.8s ease-out;
-            animation-fill-mode: both;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            transform-style: preserve-3d;
-        }
-
-        .contact-card:nth-child(1) { animation-delay: 0.2s; }
-        .contact-card:nth-child(2) { animation-delay: 0.4s; }
-        .contact-card:nth-child(3) { animation-delay: 0.6s; }
-
-        .contact-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.5s;
-        }
-
-        .contact-card::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.1);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
+            background: rgba(255,255,255,0.7);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.5);
+            padding: 2rem 2rem;
+            border-radius: 30px;
+            flex: 1 1 250px;
+            text-align: center;
+            box-shadow: 0 20px 40px -15px #1e4b59;
+            transition: 0.4s;
         }
 
         .contact-card:hover {
-            transform: translateY(-20px) rotateX(5deg) scale(1.05);
-            background: rgba(255, 255, 255, 0.3);
-            box-shadow: 0 30px 50px rgba(0,0,0,0.2);
-            border-color: rgba(255, 255, 255, 0.6);
-            animation: pulseGlow 2s infinite;
-        }
-
-        .contact-card:hover::before {
-            left: 100%;
-        }
-
-        .contact-card:hover::after {
-            width: 300px;
-            height: 300px;
+            transform: translateY(-15px);
+            background: rgba(255,255,255,0.9);
         }
 
         .contact-icon {
             font-size: 3rem;
             margin-bottom: 1rem;
-            display: inline-block;
-            animation: float 3s ease-in-out infinite;
-            position: relative;
-            z-index: 1;
-        }
-
-        .contact-card:hover .contact-icon {
-            animation: pulseGlow 1s infinite, float 2s ease-in-out infinite;
-            transform-origin: center;
+            display: block;
         }
 
         .contact-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #2c3e50;
-            transition: all 0.3s;
-            position: relative;
-            z-index: 1;
-        }
-
-        .contact-card:hover h3 {
-            transform: scale(1.15);
-            text-shadow: 0 0 10px rgba(255,255,255,0.5);
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
+            color: #1d3f4a;
         }
 
         .contact-card p {
-            margin-bottom: 1.5rem;
-            color: #2c3e50;
-            word-break: break-word;
-            transition: all 0.3s;
-            position: relative;
-            z-index: 1;
-            font-weight: 500;
-        }
-
-        .contact-card:hover p {
-            transform: scale(1.05);
-        }
-
-        .contact-card .contact-link {
-            display: inline-block;
-            padding: 12px 28px;
-            background: white;
-            color: #5F9EA0;
-            text-decoration: none;
-            border-radius: 50px;
             font-weight: 600;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            border: none;
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            margin-bottom: 1.5rem;
+            word-break: break-word;
         }
 
-        .contact-card .contact-link::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
+        .contact-link {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: #317f8c;
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+            border: 1px solid transparent;
+        }
+
+        .contact-link:hover {
+            background: white;
+            color: #1e4b59;
+            border-color: #1e4b59;
+        }
+
+        /* --- NOUVEAU : BLOC EMAIL INTERACTIF --- */
+        .live-message-section {
+            background: white;
+            border-radius: 40px 40px 20px 20px;
+            padding: 2rem 2rem 3rem;
+            margin-top: 3rem;
+            box-shadow: 0 -5px 30px rgba(0,0,0,0.1);
+            border: 1px solid #d1e6ed;
+        }
+
+        .live-message-section h3 {
+            font-size: 2rem;
+            color: #1e3c4f;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .message-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .message-form {
+            flex: 2;
+            min-width: 280px;
+        }
+
+        .message-preview {
+            flex: 1.5;
+            background: #e5f0f3;
+            border-radius: 30px;
+            padding: 2rem;
+            border: 2px dashed #5f9ea0;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: #1d4c58;
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        .form-group input, 
+        .form-group textarea {
             width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
-            transition: left 0.5s;
-            z-index: -1;
+            padding: 1rem 1.2rem;
+            border: 2px solid #c7e0e7;
+            border-radius: 60px;
+            font-size: 1rem;
+            transition: 0.2s;
+            background: rgba(255,255,255,0.8);
         }
 
-        .contact-card .contact-link:hover {
-            transform: scale(1.1) translateY(-3px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        .form-group textarea {
+            border-radius: 30px;
+            resize: vertical;
+            min-height: 120px;
         }
 
-        .contact-card .contact-link:hover::before {
-            left: 100%;
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #2e7e8c;
+            box-shadow: 0 0 0 4px rgba(56, 142, 160, 0.3);
         }
 
-        .card-whatsapp .contact-link {
-            background: #25D366;
+        .send-btn {
+            background: linear-gradient(145deg, #267a88, #1b5c68);
             color: white;
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 60px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+            border: 1px solid #a2d6df;
         }
 
-        .card-phone .contact-link {
-            background: #5F9EA0;
-            color: white;
+        .send-btn:hover {
+            background: #1b5c68;
+            transform: scale(1.05);
+            box-shadow: 0 15px 30px #1b5c6870;
         }
 
-        .card-email .contact-link {
-            background: #4682B4;
-            color: white;
+        .preview-card {
+            background: white;
+            border-radius: 25px;
+            padding: 1.5rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
 
-        .contact-links {
+        .preview-card p {
+            margin: 0.5rem 0;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 0.5rem;
+        }
+
+        .preview-card strong {
+            color: #1d4c58;
+            min-width: 80px;
+            display: inline-block;
+        }
+
+        .highlight {
+            background: #b9e6ed;
+            padding: 0.2rem 0.6rem;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            color: #0b3f4a;
+        }
+
+        .message-actions {
             display: flex;
             gap: 1rem;
-            justify-content: center;
             flex-wrap: wrap;
+            margin-top: 1.5rem;
         }
 
-        .contact-links .contact-link {
-            background: #4682B4;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            animation: fadeInUp 0.5s ease-out;
-            animation-fill-mode: both;
-            position: relative;
-            overflow: hidden;
-            color: white;
+        .small-btn {
+            background: #d1e7ed;
+            border: none;
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            font-weight: 600;
+            color: #1b4c58;
+            cursor: pointer;
+            transition: 0.2s;
+            border: 1px solid #a0c4cf;
         }
 
-        .contact-links .contact-link:nth-child(1) { animation-delay: 0.8s; }
-        .contact-links .contact-link:nth-child(2) { animation-delay: 1s; }
-
-        .contact-links .contact-link::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.5s;
+        .small-btn:hover {
+            background: #b1d4de;
         }
 
-        .contact-links .contact-link:hover {
-            transform: translateY(-8px) scale(1.1);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-            animation: pulseGlow 1.5s infinite;
-        }
-
-        .contact-links .contact-link:hover::before {
-            left: 100%;
-        }
-
-        /* Footer amélioré */
+        /* Footer */
         footer {
-            background: #4682B4;
+            background: #1e3c4f;
             color: white;
             text-align: center;
-            padding: 2rem 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        footer p {
-            animation: fadeInUp 1s ease-out, float 4s ease-in-out infinite;
-            position: relative;
-            z-index: 1;
-        }
-
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            animation: slide 4s linear infinite;
-        }
-
-        footer::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #E0FFFF, transparent);
-            animation: slideWidth 3s linear infinite;
-        }
-
-        @keyframes slide {
-            0% {
-                left: -100%;
-            }
-            100% {
-                left: 200%;
-            }
+            padding: 2rem;
         }
 
         /* Responsive */
-        @media (max-width: 768px) {
-            nav {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
+        @media (max-width: 700px) {
             .nav-links {
                 gap: 1rem;
             }
-
-            .hero h1 {
-                font-size: 2rem;
+            .message-grid {
+                flex-direction: column;
             }
-
-            .hero p {
-                font-size: 1.1rem;
-            }
-
             .apropos-content {
                 flex-direction: column-reverse;
                 text-align: center;
             }
-
-            .skills {
-                justify-content: center;
-            }
-
-            .logo {
-                font-size: 1.2rem;
-                text-align: center;
-            }
-
-            .contact-cards {
-                grid-template-columns: 1fr;
-            }
-
-            .apropos-image img {
-                width: 70%;
-                max-width: 250px;
-            }
-
-            .contact-card:hover {
-                transform: translateY(-15px) scale(1.02);
-            }
-        }
-
-        @media (max-width: 480px) {
-            .apropos-image img {
-                width: 90%;
-                max-width: 220px;
-            }
-
-            .hero h1 {
-                font-size: 1.8rem;
-            }
-
-            .contact-card {
-                padding: 1.5rem;
-            }
-
-            .contact-card .contact-link {
-                padding: 10px 20px;
-                font-size: 0.9rem;
-            }
-        }
-
-        /* Animation de chargement de page */
-        @keyframes pageLoad {
-            0% {
-                opacity: 0;
-            }
-            100% {
-                opacity: 1;
-            }
-        }
-
-        body {
-            animation: pageLoad 0.5s ease-out;
-        }
-
-        /* Effet de vague pour le fond */
-        .wave-bg {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 100px;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.2" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,165.3C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
-            background-repeat: no-repeat;
-            background-size: cover;
-            animation: wave 10s linear infinite;
-            opacity: 0.2;
-            pointer-events: none;
-        }
-
-        @keyframes wave {
-            0% {
-                transform: translateX(0) scaleX(1);
-            }
-            50% {
-                transform: translateX(-25%) scaleX(1.2);
-            }
-            100% {
-                transform: translateX(0) scaleX(1);
+            .apropos-text h2:after {
+                left: 50%;
+                transform: translateX(-50%);
             }
         }
     </style>
@@ -895,7 +467,7 @@
 <body>
     <header>
         <nav>
-            <a href="#accueil" class="logo">RATIANARIVO Mirindra Matthieu</a>
+            <a href="#accueil" class="logo">RATIANARIVO M. Matthieu</a>
             <div class="nav-links">
                 <a href="#accueil">Accueil</a>
                 <a href="#apropos">À propos</a>
@@ -910,169 +482,230 @@
             <p>Développeur créatif passionné par la création d'expériences web uniques et mémorables</p>
             <a href="#apropos" class="btn">En savoir plus</a>
         </div>
-        <div class="wave-bg"></div>
     </section>
 
     <section id="apropos">
         <div class="container apropos-content">
             <div class="apropos-text">
                 <h2>À propos de moi</h2>
-                <p>Je suis un développeur passionné par le site web. J'aime transformer des idées créatives en solutions numériques fonctionnelles.J'ai acquis des bases en programmation (HTML,CSS, JavaSCRIPT).</p>
-                <p>Motivé, sérieux et curieux d'apprendre, je cherche une opportunité qui me permettra de développer mes comptétences pratiques et de lieux comprendre le fonctionnement. notameny des sites web simples, ce qui m'aide à logique et ma créativité.</p>
-                <p>Je reste à votre disposition pour un entretien et vous remercie de l'ettention portée à ma condidature.</p>
-                <p>Ma philosophie est simple :"La technologie construit le système, l'expérience construit la relation".</p>
+                <p>Je suis un développeur passionné par le site web. J'aime transformer des idées créatives en solutions numériques fonctionnelles. J'ai acquis des bases en programmation (HTML, CSS, JavaScript).</p>
+                <p>Motivé, sérieux et curieux d'apprendre, je cherche une opportunité pour développer mes compétences pratiques et mieux comprendre le fonctionnement web, notamment sur des sites simples, ce qui nourrit ma logique et ma créativité.</p>
+                <p>Je reste à votre disposition pour un entretien et vous remercie de l'intention portée à ma candidature.</p>
+                <p><em>"La technologie construit le système, l'expérience construit la relation."</em></p>
                 <div class="skills">
                     <span class="skill">HTML</span>
                     <span class="skill">CSS</span>
                     <span class="skill">JavaScript</span>
+                    <span class="skill">UI/Design</span>
                 </div>
             </div>
             <div class="apropos-image">
-                <img src="1772355979542.jpg" alt="Photo de profil">
+                <img src="1772355979542.jpg" alt="Photo de profil Matthieu" onerror="this.src='https://via.placeholder.com/350x400?text=Photo+Matthieu'">
             </div>
         </div>
-        <div class="wave-bg"></div>
     </section>
 
     <section id="contact">
         <div class="container contact-content">
-            <h2>Travaillons ensemble</h2>
-            <p style="margin-bottom: 2rem; animation: fadeInUp 1s ease-out 0.2s both;">Vous avez un projet en tête ? N'hésitez pas à me contacter !</p>
-            
+            <h2 style="font-size: 2.5rem; color: #1e3c4f;">Travaillons ensemble</h2>
+            <p style="margin-bottom: 2rem; font-size: 1.2rem;">Vous avez un projet en tête ? Écrivez-moi directement !</p>
+
             <div class="contact-cards">
-                <!-- Carte WhatsApp -->
-                <div class="contact-card card-whatsapp">
+                <div class="contact-card">
                     <span class="contact-icon">📱</span>
                     <h3>WhatsApp</h3>
                     <p>+261 38 62 876 80</p>
-                    <a href="https://wa.me/261386287680?text=Bonjour%20Matthieu%2C%20je%20souhaite%20vous%20contacter%20pour%20un%20projet" 
-                       class="contact-link" 
-                       target="_blank">
-                        Envoyer un message
-                    </a>
+                    <a href="https://wa.me/261386287680?text=Bonjour%20Matthieu" class="contact-link" target="_blank">Message</a>
                 </div>
-
-                <!-- Carte Téléphone -->
-                <div class="contact-card card-phone">
+                <div class="contact-card">
                     <span class="contact-icon">📞</span>
                     <h3>Téléphone</h3>
                     <p>+261 38 62 876 80</p>
-                    <a href="tel:+261386287680" class="contact-link">
-                        Appeler maintenant
-                    </a>
+                    <a href="tel:+261386287680" class="contact-link">Appeler</a>
                 </div>
-
-                <!-- Carte Email -->
-                <div class="contact-card card-email">
+                <div class="contact-card">
                     <span class="contact-icon">✉️</span>
                     <h3>Email</h3>
                     <p>mirindramatthieu@gmail.com</p>
-                    <a href="mailto:mirindramatthieu@gmail.com?subject=Contact%20depuis%20mon%20portfolio&body=Bonjour%20Matthieu%2C" 
-                       class="contact-link">
-                        Envoyer un email
-                    </a>
+                    <a href="mailto:mirindramatthieu@gmail.com" class="contact-link">Envoyer mail</a>
                 </div>
             </div>
 
-            <!-- Liens sociaux supplémentaires -->
-            <div style="margin-top: 2rem;">
-                <p style="margin-bottom: 1rem; animation: fadeInUp 1s ease-out 0.6s both;">Ou retrouvez-moi sur :</p>
-                <div class="contact-links">
-                    <a href="#" class="contact-link" style="background: #0077b5;">LinkedIn</a>
-                    <a href="#" class="contact-link" style="background: #333;">GitHub</a>
+            <!-- ========== NOUVEAU BLOC MESSAGE EN BAS ========== -->
+            <div class="live-message-section">
+                <h3>📬 Me contacter par email</h3>
+                <div class="message-grid">
+                    <!-- Partie formulaire -->
+                    <div class="message-form">
+                        <div class="form-group">
+                            <label>Votre nom</label>
+                            <input type="text" id="nameInput" placeholder="ex: Jean Dupont" value="Faniry">
+                        </div>
+                        <div class="form-group">
+                            <label>Votre email</label>
+                            <input type="email" id="emailInput" placeholder="ex: jean@exemple.fr" value="faniry@test.com">
+                        </div>
+                        <div class="form-group">
+                            <label>Message</label>
+                            <textarea id="msgInput" placeholder="Bonjour Matthieu, j'ai un projet web...">Bonjour, j'aimerais discuter de vos services !</textarea>
+                        </div>
+                        <button class="send-btn" id="sendMessageBtn">
+                            <span>✈️</span> Envoyer le message
+                        </button>
+                        <div style="margin-top: 1rem; font-size: 0.95rem; color: #23606e;" id="liveFeedback"></div>
+                    </div>
+                    
+                    <!-- Partie prévisualisation + actions -->
+                    <div class="message-preview">
+                        <h4 style="color: #1e3c4f; margin-bottom: 1rem;">🔍 Aperçu</h4>
+                        <div class="preview-card" id="previewBox">
+                            <p><strong>Nom :</strong> <span id="previewName">Faniry</span></p>
+                            <p><strong>Email :</strong> <span id="previewEmail">faniry@test.com</span></p>
+                            <p><strong>Message :</strong><br> <span id="previewMsg">Bonjour, j'aimerais discuter de vos services !</span></p>
+                        </div>
+                        <div class="message-actions">
+                            <button class="small-btn" id="copyPreviewBtn">📋 Copier le message</button>
+                            <button class="small-btn" id="resetDemoBtn">🔄 Réinitialiser</button>
+                        </div>
+                        <p style="margin-top: 1rem; font-size: 0.9rem; background: #fff2d8; padding: 0.6rem; border-radius: 20px;">
+                            ⚡ Le bouton "Envoyer" ouvre votre logiciel de messagerie avec les informations ci-dessus.
+                        </p>
+                    </div>
                 </div>
             </div>
+            <!-- ========== FIN BLOC ========== -->
+
+            <div style="margin-top: 2rem; display: flex; gap: 1rem; justify-content: center;">
+                <a href="#" class="contact-link" style="background: #0077b5;">LinkedIn</a>
+                <a href="#" class="contact-link" style="background: #24292e;">GitHub</a>
+            </div>
         </div>
-        <div class="wave-bg"></div>
     </section>
 
     <footer>
         <div class="container">
-            <p>&copy; 2026 RATIANARIVO Mirindra Matthieu. Tous droits réservés.</p>
+            <p>&copy; 2026 RATIANARIVO Mirindra Matthieu — Créativité & développement</p>
         </div>
     </footer>
 
     <script>
-        // Smooth scrolling pour les liens de navigation
-        document.querySelectorAll('nav a').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    targetElement.scrollIntoView({ 
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Ajouter une confirmation pour les appels téléphoniques
-        const phoneLinks = document.querySelectorAll('a[href^="tel:"]');
-        phoneLinks.forEach(link => {
-            link.addEventListener('click', function(e) {
-                if (!confirm('Voulez-vous appeler ce numéro ?')) {
+        (function() {
+            // Smooth scroll
+            document.querySelectorAll('nav a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
                     e.preventDefault();
-                }
-            });
-        });
-
-        // Animation au scroll pour les éléments
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Observer tous les éléments avec animation
-        document.querySelectorAll('section, .contact-card, .skill').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Gestion du menu actif au scroll
-        const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('.nav-links a');
-
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (pageYOffset >= sectionTop - 200) {
-                    current = section.getAttribute('id');
-                }
+                    const id = this.getAttribute('href');
+                    document.querySelector(id)?.scrollIntoView({ behavior: 'smooth' });
+                });
             });
 
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.style.color = '#87CEEB';
-                } else {
-                    link.style.color = '#2c3e50';
-                }
-            });
-        });
+            // ===== GESTION DU FORMULAIRE DE MESSAGE =====
+            const nameInput = document.getElementById('nameInput');
+            const emailInput = document.getElementById('emailInput');
+            const msgInput = document.getElementById('msgInput');
+            const previewName = document.getElementById('previewName');
+            const previewEmail = document.getElementById('previewEmail');
+            const previewMsg = document.getElementById('previewMsg');
+            const liveFeedback = document.getElementById('liveFeedback');
+            const sendBtn = document.getElementById('sendMessageBtn');
 
-        // Détection de l'orientation pour forcer le recalcule
-        window.addEventListener('orientationchange', function() {
-            setTimeout(() => {
-                document.body.style.opacity = '0.99';
+            // Fonction de mise à jour de l'aperçu
+            function updatePreview() {
+                previewName.innerText = nameInput.value.trim() || '(non renseigné)';
+                previewEmail.innerText = emailInput.value.trim() || '(non renseigné)';
+                previewMsg.innerText = msgInput.value.trim() || '(vide)';
+            }
+
+            // Écouter les changements
+            nameInput.addEventListener('input', updatePreview);
+            emailInput.addEventListener('input', updatePreview);
+            msgInput.addEventListener('input', updatePreview);
+
+            // Bouton envoyer : prépare le mail
+            sendBtn.addEventListener('click', function() {
+                const nom = encodeURIComponent(nameInput.value.trim());
+                const email = encodeURIComponent(emailInput.value.trim());
+                const message = encodeURIComponent(msgInput.value.trim());
+                
+                if (!nom || !email || !message) {
+                    liveFeedback.innerText = '❌ Veuillez remplir tous les champs.';
+                    liveFeedback.style.color = '#b91c1c';
+                    return;
+                }
+
+                // Construction du mailto: avec corps et sujet
+                const sujet = encodeURIComponent('Contact depuis votre portfolio');
+                const corps = encodeURIComponent(
+`Nom : ${nameInput.value.trim()}
+Email : ${emailInput.value.trim()}
+
+Message :
+${msgInput.value.trim()}`
+                );
+                
+                const mailtoLink = `mailto:mirindramatthieu@gmail.com?subject=${sujet}&body=${corps}`;
+                
+                // Petit retour avant ouverture
+                liveFeedback.innerText = '✅ Ouverture de votre application mail...';
+                liveFeedback.style.color = '#1f7a4b';
+                
+                // Ouvre le client mail
+                window.location.href = mailtoLink;
+
+                // Option : ouverture en arrière plan (certains navigateurs)
                 setTimeout(() => {
-                    document.body.style.opacity = '1';
-                }, 50);
-            }, 200);
-        });
+                    liveFeedback.innerText = '📨 N\'oubliez pas d\'envoyer !';
+                }, 2000);
+            });
 
-        console.log('Portfolio chargé avec succès !');
+            // Copier le message dans le presse-papier
+            document.getElementById('copyPreviewBtn').addEventListener('click', function() {
+                const textToCopy = `Nom: ${previewName.innerText}\nEmail: ${previewEmail.innerText}\nMessage: ${previewMsg.innerText}`;
+                navigator.clipboard.writeText(textToCopy).then(() => {
+                    liveFeedback.innerText = '📋 Message copié dans le presse-papier !';
+                    liveFeedback.style.color = '#2b6e7d';
+                }).catch(() => {
+                    liveFeedback.innerText = '❌ Erreur de copie';
+                });
+            });
+
+            // Réinitialiser les champs (exemple)
+            document.getElementById('resetDemoBtn').addEventListener('click', function() {
+                nameInput.value = 'Jean Test';
+                emailInput.value = 'jean@demo.fr';
+                msgInput.value = 'Bonjour, je souhaite en savoir plus.';
+                updatePreview();
+                liveFeedback.innerText = '🔄 Champs réinitialisés (exemple)';
+                liveFeedback.style.color = '#1e3c4f';
+            });
+
+            // confirmation appel téléphonique
+            document.querySelectorAll('a[href^="tel:"]').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    if (!confirm('Appeler ce numéro ?')) e.preventDefault();
+                });
+            });
+
+            // Observer pour animations douces
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.2 });
+            
+            document.querySelectorAll('section, .contact-card').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = '0.6s';
+                observer.observe(el);
+            });
+
+            // Initial preview
+            updatePreview();
+        })();
     </script>
 </body>
 </html>
