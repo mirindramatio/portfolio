@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -927,7 +927,7 @@
                 </div>
             </div>
             <div class="apropos-image">
-                <img src="1772355979542.jpg" alt="Photo de profil">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTaYVG_iCjqtC3bXEKrVyw1a1VUNpkA7fViw&s" alt="Photo de profil">
             </div>
         </div>
         <div class="wave-bg"></div>
