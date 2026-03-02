@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -408,7 +408,7 @@
                         </div>
                     </div>
                     <div class="apropos-image">
-                        <img src="https://picsum.photos/id/1005/400/400" alt="Photo de profil">
+                        <img src="1772355979542.jpg" alt="Photo de profil">
                     </div>
                 </div>
             </div>
@@ -423,13 +423,13 @@
                     <div class="contact-card">
                         <span class="contact-icon">📧</span>
                         <h3>Email</h3>
-                        <p>matthieu.ratianarivo@email.com</p>
+                        <p>mirindramatthieu@gmail.com</p>
                         <a href="#" class="contact-link">Envoyer</a>
                     </div>
                     <div class="contact-card">
                         <span class="contact-icon">📱</span>
                         <h3>Téléphone</h3>
-                        <p>+33 6 12 34 56 78</p>
+                        <p>+261 38 62 876 80</p>
                         <a href="#" class="contact-link">Appeler</a>
                     </div>
                     <div class="contact-card">
