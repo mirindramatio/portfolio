@@ -5,374 +5,896 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portfolio - RATIANARIVO Mirindra Matthieu</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
-            background-color: #f8fafc;
-            color: #1e293b;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #87CEEB 0%, #5F9EA0 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
         }
-    
+
         .container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 20px;
         }
-    
-        /* HEADER CLASSIQUE */
+
+        /* Animations globales améliorées */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(60px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes slideInBlur {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+                filter: blur(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+                filter: blur(0);
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        @keyframes floatRotate {
+            0% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-10px) rotate(2deg);
+            }
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+        }
+
+        @keyframes pulseGlow {
+            0% {
+                box-shadow: 0 0 0 0 rgba(135, 206, 235, 0.4);
+                transform: scale(1);
+            }
+            50% {
+                box-shadow: 0 0 20px 10px rgba(135, 206, 235, 0.2);
+                transform: scale(1.02);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(135, 206, 235, 0.4);
+                transform: scale(1);
+            }
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -200% 0;
+            }
+            100% {
+                background-position: 200% 0;
+            }
+        }
+
+        @keyframes rotateGradient {
+            0% {
+                transform: rotate(0deg) scale(1);
+            }
+            50% {
+                transform: rotate(180deg) scale(1.1);
+            }
+            100% {
+                transform: rotate(360deg) scale(1);
+            }
+        }
+
+        @keyframes borderPulse {
+            0%, 100% {
+                border-color: rgba(135, 206, 235, 0.3);
+            }
+            50% {
+                border-color: rgba(135, 206, 235, 0.8);
+            }
+        }
+
+        /* Header avec animation améliorée */
         header {
-            background: #ffffff;
-            border-bottom: 2px solid #e2e8f0;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
             position: fixed;
             width: 100%;
             top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            animation: slideDown 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-    
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%) rotateX(-90deg);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0) rotateX(0);
+                opacity: 1;
+            }
+        }
+
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 1rem 5%;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
         }
-    
+
         .logo {
             font-size: 1.5rem;
-            font-weight: 600;
-            color: #0f3b4c;
+            font-weight: bold;
+            color: #2c3e50;
             text-decoration: none;
-            letter-spacing: -0.5px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
         }
-    
+
+        .logo::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(135, 206, 235, 0.2), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        .logo::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #87CEEB;
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.3s;
+        }
+
+        .logo:hover {
+            color: #87CEEB;
+            transform: scale(1.05);
+        }
+
+        .logo:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+
         .nav-links {
             display: flex;
             gap: 2rem;
         }
-    
+
         .nav-links a {
             text-decoration: none;
             color: #2c3e50;
             font-weight: 500;
-            padding: 0.5rem 0;
-            border-bottom: 2px solid transparent;
-            transition: 0.2s;
+            transition: all 0.3s;
+            position: relative;
         }
-    
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: #87CEEB;
+            transition: all 0.3s;
+            transform: translateX(-50%);
+        }
+
         .nav-links a:hover {
-            border-bottom-color: #2c7a8c;
-            color: #0f3b4c;
+            color: #87CEEB;
+            transform: translateY(-2px);
         }
-    
-        /* SECTIONS */
+
+        .nav-links a:hover::before {
+            width: 100%;
+        }
+
+        /* Sections avec animations d'entrée */
         section {
-            padding: 100px 0 80px;
-            min-height: auto;
-            border-bottom: 1px solid #e9ecef;
+            padding: 100px 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            opacity: 0;
+            animation: fadeInUp 1s cubic-bezier(0.215, 0.610, 0.355, 1) forwards;
+            position: relative;
+            overflow: hidden;
         }
-    
+
+        section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            opacity: 0;
+            animation: rotateGradient 20s linear infinite;
+            pointer-events: none;
+        }
+
+        section:hover::before {
+            opacity: 0.5;
+        }
+
+        /* Accueil amélioré */
         #accueil {
-            background-color: #ffffff;
-            padding-top: 120px;
+            text-align: center;
+            background: linear-gradient(135deg, rgba(135, 206, 235, 0.95), rgba(95, 158, 160, 0.9));
+            animation: fadeInScale 1.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
         }
-    
+
         .hero h1 {
             font-size: 3rem;
             margin-bottom: 1rem;
-            color: #0c2f3a;
-            font-weight: 600;
+            color: #2c3e50;
+            animation: float 4s ease-in-out infinite;
+            text-shadow: 2px 2px 4px rgba(255,255,255,0.5);
         }
-    
+
         .hero p {
-            font-size: 1.2rem;
-            color: #334e5c;
+            font-size: 1.3rem;
+            color: #2c3e50;
             max-width: 600px;
-            margin-bottom: 2rem;
+            margin: 0 auto 2rem;
+            animation: fadeInUp 1s ease-out 0.3s both, float 5s ease-in-out 1s infinite;
+            font-weight: 500;
         }
-    
+
         .btn {
             display: inline-block;
-            padding: 0.8rem 2rem;
-            background-color: #2c7a8c;
+            padding: 12px 30px;
+            background: linear-gradient(135deg, #5F9EA0, #4682B4);
             color: white;
-            border-radius: 6px;
             text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s;
             font-weight: 500;
-            border: 1px solid #1f5c6b;
-            transition: 0.2s;
+            border: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            animation: pulseGlow 3s infinite;
         }
-    
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+            z-index: -1;
+        }
+
         .btn:hover {
-            background-color: #1f5c6b;
-            border-color: #15424e;
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(135, 206, 235, 0.4);
+            animation: none;
         }
-    
-        /* À PROPOS */
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        /* À propos amélioré */
         #apropos {
-            background-color: #f9f9f9;
+            background: linear-gradient(135deg, #B0E0E6, #E0FFFF);
+            position: relative;
         }
-    
+
         .apropos-content {
             display: flex;
-            gap: 3rem;
             align-items: center;
-            flex-wrap: wrap;
+            gap: 4rem;
         }
-    
+
         .apropos-text {
-            flex: 2;
-            min-width: 300px;
+            flex: 1;
+            animation: slideInBlur 1s ease-out;
         }
-    
+
         .apropos-text h2 {
-            font-size: 2.2rem;
-            color: #0c2f3a;
+            font-size: 2.5rem;
             margin-bottom: 1.5rem;
-            border-left: 5px solid #2c7a8c;
-            padding-left: 1rem;
-        }
-    
-        .apropos-text p {
-            margin: 1.2rem 0;
             color: #2c3e50;
+            position: relative;
+            display: inline-block;
         }
-    
+
+        .apropos-text h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: #5F9EA0;
+            animation: slideWidth 2s ease-in-out infinite;
+        }
+
+        .apropos-text h2::before {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            right: 0;
+            width: 50px;
+            height: 3px;
+            background: #5F9EA0;
+            animation: slideWidth 2s ease-in-out 1s infinite;
+        }
+
+        @keyframes slideWidth {
+            0%, 100% {
+                width: 50px;
+            }
+            50% {
+                width: 100px;
+            }
+        }
+
+        .apropos-text p {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            transition: all 0.3s;
+            position: relative;
+            padding-left: 0;
+            font-weight: 500;
+        }
+
+        .apropos-text p:hover {
+            transform: translateX(15px);
+            color: #5F9EA0;
+            padding-left: 10px;
+        }
+
+        .apropos-text p::before {
+            content: '→';
+            position: absolute;
+            left: -20px;
+            opacity: 0;
+            transition: all 0.3s;
+            color: #5F9EA0;
+        }
+
+        .apropos-text p:hover::before {
+            opacity: 1;
+            left: -10px;
+        }
+
         .skills {
             display: flex;
-            gap: 0.8rem;
             flex-wrap: wrap;
-            margin: 2rem 0;
+            gap: 1rem;
+            margin-top: 2rem;
         }
-    
+
         .skill {
-            background: #e9f0f3;
-            padding: 0.5rem 1.5rem;
-            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 10px 20px;
+            border-radius: 30px;
+            color: #2c3e50;
             font-weight: 500;
-            color: #1f5c6b;
-            border: 1px solid #cbd5e1;
-            font-size: 0.95rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: fadeInUp 0.5s ease-out;
+            animation-fill-mode: both;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
         }
-    
+
+        .skill:nth-child(1) { animation-delay: 0.1s; }
+        .skill:nth-child(2) { animation-delay: 0.2s; }
+        .skill:nth-child(3) { animation-delay: 0.3s; }
+
+        .skill::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(95, 158, 160, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+            z-index: 0;
+        }
+
+        .skill:hover {
+            transform: translateY(-8px) scale(1.1);
+            background: #5F9EA0;
+            color: white;
+            box-shadow: 0 10px 25px rgba(95, 158, 160, 0.5);
+            border-color: #4682B4;
+            animation: borderPulse 1.5s infinite;
+        }
+
+        .skill:hover::before {
+            width: 200px;
+            height: 200px;
+        }
+
         .apropos-image {
             flex: 1;
-            min-width: 250px;
-            text-align: center;
-        }
-    
-        .apropos-image img {
-            width: 100%;
-            max-width: 300px;
-            border-radius: 8px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            border: 3px solid white;
-        }
-    
-        /* CONTACT CARDS (version classique) */
-        #contact {
-            background-color: #ffffff;
-        }
-    
-        .contact-cards {
             display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
             justify-content: center;
-            margin: 3rem 0;
+            animation: fadeInRight 1s ease-out;
         }
-    
-        .contact-card {
-            background: #f8fbfc;
-            border: 1px solid #dde7eb;
-            padding: 2rem 1.5rem;
-            border-radius: 8px;
-            flex: 1 1 220px;
+
+        .apropos-image img {
+            width: 80%;
+            max-width: 300px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: floatRotate 5s ease-in-out infinite;
+            border: 3px solid transparent;
+            background: linear-gradient(white, white) padding-box,
+                        linear-gradient(135deg, #87CEEB, #5F9EA0) border-box;
+        }
+
+        .apropos-image img:hover {
+            transform: scale(1.08) rotate(3deg);
+            box-shadow: 0 30px 60px rgba(135, 206, 235, 0.4);
+        }
+
+        /* Contact amélioré avec effets de cartes */
+        #contact {
+            background: linear-gradient(135deg, #87CEEB 0%, #5F9EA0 100%);
+            color: white;
             text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.03);
-            transition: 0.2s;
+            position: relative;
+            overflow: hidden;
         }
-    
-        .contact-card:hover {
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            border-color: #2c7a8c;
+
+        #contact::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 50%);
+            animation: rotateGradient 25s linear infinite;
         }
-    
-        .contact-icon {
-            font-size: 2.8rem;
+
+        #contact h2 {
+            font-size: 2.5rem;
             margin-bottom: 1rem;
-            display: block;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1s ease-out;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+            color: #2c3e50;
         }
-    
+
+        .contact-content p {
+            color: #2c3e50;
+            font-weight: 500;
+        }
+
+        .contact-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+            perspective: 1000px;
+        }
+
+        .contact-card {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 20px;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            animation: fadeInScale 0.8s ease-out;
+            animation-fill-mode: both;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transform-style: preserve-3d;
+        }
+
+        .contact-card:nth-child(1) { animation-delay: 0.2s; }
+        .contact-card:nth-child(2) { animation-delay: 0.4s; }
+        .contact-card:nth-child(3) { animation-delay: 0.6s; }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
+        }
+
+        .contact-card::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-20px) rotateX(5deg) scale(1.05);
+            background: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 30px 50px rgba(0,0,0,0.2);
+            border-color: rgba(255, 255, 255, 0.6);
+            animation: pulseGlow 2s infinite;
+        }
+
+        .contact-card:hover::before {
+            left: 100%;
+        }
+
+        .contact-card:hover::after {
+            width: 300px;
+            height: 300px;
+        }
+
+        .contact-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+            animation: float 3s ease-in-out infinite;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-card:hover .contact-icon {
+            animation: pulseGlow 1s infinite, float 2s ease-in-out infinite;
+            transform-origin: center;
+        }
+
         .contact-card h3 {
             font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-            color: #1d3f4a;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+            transition: all 0.3s;
+            position: relative;
+            z-index: 1;
         }
-    
+
+        .contact-card:hover h3 {
+            transform: scale(1.15);
+            text-shadow: 0 0 10px rgba(255,255,255,0.5);
+        }
+
         .contact-card p {
-            margin-bottom: 1.2rem;
-            color: #3a5a66;
-        }
-    
-        .contact-link {
-            display: inline-block;
-            padding: 0.5rem 1.5rem;
-            background: #2c7a8c;
-            color: white;
-            border-radius: 4px;
-            text-decoration: none;
+            margin-bottom: 1.5rem;
+            color: #2c3e50;
+            word-break: break-word;
+            transition: all 0.3s;
+            position: relative;
+            z-index: 1;
             font-weight: 500;
-            border: 1px solid #1f5c6b;
         }
-    
-        .contact-link:hover {
-            background: #1f5c6b;
+
+        .contact-card:hover p {
+            transform: scale(1.05);
         }
-    
-        /* BLOC EMAIL (version classique épurée) */
-        .live-message-section {
-            background: #f9f9f9;
-            border: 1px solid #dce5e9;
-            border-radius: 8px;
-            padding: 2.5rem;
-            margin-top: 3rem;
-        }
-    
-        .live-message-section h3 {
-            font-size: 1.8rem;
-            color: #0c2f3a;
-            margin-bottom: 1.5rem;
-            font-weight: 600;
-        }
-    
-        .message-grid {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-        }
-    
-        .message-form {
-            flex: 2;
-            min-width: 280px;
-        }
-    
-        .message-preview {
-            flex: 1.5;
-            background: #ffffff;
-            border: 1px solid #d4e1e7;
-            border-radius: 8px;
-            padding: 2rem;
-        }
-    
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-    
-        .form-group label {
-            font-weight: 600;
-            color: #1d4a57;
-            display: block;
-            margin-bottom: 0.4rem;
-            font-size: 0.95rem;
-        }
-    
-        .form-group input, 
-        .form-group textarea {
-            width: 100%;
-            padding: 0.8rem 1rem;
-            border: 1px solid #cbd5e1;
-            border-radius: 4px;
-            font-size: 1rem;
-            background: white;
-            transition: 0.15s;
-        }
-    
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #2c7a8c;
-            box-shadow: 0 0 0 2px rgba(44,122,140,0.2);
-        }
-    
-        .send-btn {
-            background: #2c7a8c;
-            color: white;
-            border: none;
-            padding: 0.8rem 2rem;
-            border-radius: 4px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            border: 1px solid #1f5c6b;
-            transition: 0.2s;
-        }
-    
-        .send-btn:hover {
-            background: #1f5c6b;
-        }
-    
-        .preview-card {
-            background: #f8fbfc;
-            padding: 1.5rem;
-            border-radius: 6px;
-            border-left: 4px solid #2c7a8c;
-        }
-    
-        .preview-card p {
-            margin: 0.7rem 0;
-            border-bottom: 1px dashed #ced9df;
-            padding-bottom: 0.5rem;
-        }
-    
-        .preview-card strong {
-            color: #1a4a57;
-            min-width: 90px;
+
+        .contact-card .contact-link {
             display: inline-block;
+            padding: 12px 28px;
+            background: white;
+            color: #5F9EA0;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: none;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
-    
-        .message-actions {
+
+        .contact-card .contact-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.8), transparent);
+            transition: left 0.5s;
+            z-index: -1;
+        }
+
+        .contact-card .contact-link:hover {
+            transform: scale(1.1) translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+
+        .contact-card .contact-link:hover::before {
+            left: 100%;
+        }
+
+        .card-whatsapp .contact-link {
+            background: #25D366;
+            color: white;
+        }
+
+        .card-phone .contact-link {
+            background: #5F9EA0;
+            color: white;
+        }
+
+        .card-email .contact-link {
+            background: #4682B4;
+            color: white;
+        }
+
+        .contact-links {
             display: flex;
             gap: 1rem;
-            margin-top: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
         }
-    
-        .small-btn {
-            background: #e2eef2;
-            border: 1px solid #b9cfd8;
-            padding: 0.5rem 1.2rem;
-            border-radius: 4px;
-            font-weight: 500;
-            color: #1b4a57;
-            cursor: pointer;
+
+        .contact-links .contact-link {
+            background: #4682B4;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: fadeInUp 0.5s ease-out;
+            animation-fill-mode: both;
+            position: relative;
+            overflow: hidden;
+            color: white;
         }
-    
-        .small-btn:hover {
-            background: #cddee5;
+
+        .contact-links .contact-link:nth-child(1) { animation-delay: 0.8s; }
+        .contact-links .contact-link:nth-child(2) { animation-delay: 1s; }
+
+        .contact-links .contact-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: left 0.5s;
         }
-    
-        /* FOOTER */
+
+        .contact-links .contact-link:hover {
+            transform: translateY(-8px) scale(1.1);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+            animation: pulseGlow 1.5s infinite;
+        }
+
+        .contact-links .contact-link:hover::before {
+            left: 100%;
+        }
+
+        /* Footer amélioré */
         footer {
-            background: #1e3c4f;
-            color: #e0edf2;
+            background: #4682B4;
+            color: white;
             text-align: center;
-            padding: 2rem;
-            border-top: 3px solid #154653;
+            padding: 2rem 0;
+            position: relative;
+            overflow: hidden;
         }
-    
-        /* RESPONSIVE */
-        @media (max-width: 700px) {
-            .nav-links { gap: 1rem; }
-            .hero h1 { font-size: 2.2rem; }
-            .apropos-content { flex-direction: column-reverse; text-align: center; }
-            .apropos-text h2 { border-left: none; text-align: center; }
+
+        footer p {
+            animation: fadeInUp 1s ease-out, float 4s ease-in-out infinite;
+            position: relative;
+            z-index: 1;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            animation: slide 4s linear infinite;
+        }
+
+        footer::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #E0FFFF, transparent);
+            animation: slideWidth 3s linear infinite;
+        }
+
+        @keyframes slide {
+            0% {
+                left: -100%;
+            }
+            100% {
+                left: 200%;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .apropos-content {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+
+            .skills {
+                justify-content: center;
+            }
+
+            .logo {
+                font-size: 1.2rem;
+                text-align: center;
+            }
+
+            .contact-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .apropos-image img {
+                width: 70%;
+                max-width: 250px;
+            }
+
+            .contact-card:hover {
+                transform: translateY(-15px) scale(1.02);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .apropos-image img {
+                width: 90%;
+                max-width: 220px;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .contact-card {
+                padding: 1.5rem;
+            }
+
+            .contact-card .contact-link {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Animation de chargement de page */
+        @keyframes pageLoad {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        body {
+            animation: pageLoad 0.5s ease-out;
+        }
+
+        /* Effet de vague pour le fond */
+        .wave-bg {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%23ffffff" fill-opacity="0.2" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,165.3C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>');
+            background-repeat: no-repeat;
+            background-size: cover;
+            animation: wave 10s linear infinite;
+            opacity: 0.2;
+            pointer-events: none;
+        }
+
+        @keyframes wave {
+            0% {
+                transform: translateX(0) scaleX(1);
+            }
+            50% {
+                transform: translateX(-25%) scaleX(1.2);
+            }
+            100% {
+                transform: translateX(0) scaleX(1);
+            }
         }
     </style>
 </head>
 <body>
     <header>
         <nav>
-            <a href="#" class="logo">Portfolio</a>
+            <a href="#accueil" class="logo">RATIANARIVO Mirindra Matthieu</a>
             <div class="nav-links">
                 <a href="#accueil">Accueil</a>
                 <a href="#apropos">À propos</a>
@@ -381,142 +903,92 @@
         </nav>
     </header>
 
-    <main>
-        <!-- ACCUEIL -->
-        <section id="accueil">
-            <div class="container hero">
-                <h1>RATIANARIVO Mirindra Matthieu</h1>
-                <p>Je suis un développeur passionné par le site web. J'aime transformer des idées créatives en solutions numériques fonctionnelles. J'ai acquis des bases en programmation (HTML, CSS, JavaScript).</p>
-                <a href="#contact" class="btn">Me contacter</a>
-            </div>
-        </section>
+    <section id="accueil">
+        <div class="container hero">
+            <h1>Bonjour, je suis RATIANARIVO Mirindra Matthieu</h1>
+            <p>Développeur créatif passionné par la création d'expériences web uniques et mémorables</p>
+            <a href="#apropos" class="btn">En savoir plus</a>
+        </div>
+        <div class="wave-bg"></div>
+    </section>
 
-        <!-- À PROPOS -->
-        <section id="apropos">
-            <div class="container">
-                <div class="apropos-content">
-                    <div class="apropos-text">
-                        <h2>À propos</h2>
-                        <p>Motivé, sérieux et curieux d'apprendre, je cherche une opportunité pour développer mes compétences pratiques et mieux comprendre le fonctionnement web, notamment sur des sites simples, ce qui nourrit ma logique et ma créativité.</p>
-                        <p>Je reste à votre disposition pour un entretien et vous remercie de l'intention portée à ma candidature.</p>
-                        <div class="skills">
-                            <span class="skill">HTML5/CSS3</span>
-                            <span class="skill">JavaScript</span>
-                            <span class="skill">React</span>
-                            <span class="skill">Node.js</span>
-                            <span class="skill">UI/Design</span>
-                        </div>
-                    </div>
-                    <div class="apropos-image">
-                        <img src="1772355979542.jpg" alt="Photo de profil">
-                    </div>
+    <section id="apropos">
+        <div class="container apropos-content">
+            <div class="apropos-text">
+                <h2>À propos de moi</h2>
+                <p>Je suis un développeur passionné par le site web. J'aime transformer des idées créatives en solutions numériques fonctionnelles.J'ai acquis des bases en programmation (HTML,CSS, JavaSCRIPT).</p>
+                <p>Motivé, sérieux et curieux d'apprendre, je cherche une opportunité qui me permettra de développer mes comptétences pratiques et de lieux comprendre le fonctionnement. notameny des sites web simples, ce qui m'aide à logique et ma créativité.</p>
+                <p>Je reste à votre disposition pour un entretien et vous remercie de l'ettention portée à ma condidature.</p>
+                <p>Ma philosophie est simple :"La technologie construit le système, l'expérience construit la relation".</p>
+                <div class="skills">
+                    <span class="skill">HTML</span>
+                    <span class="skill">CSS</span>
+                    <span class="skill">JavaScript</span>
                 </div>
             </div>
-        </section>
+            <div class="apropos-image">
+                <img src="1772355979542.jpg" alt="Photo de profil">
+            </div>
+        </div>
+        <div class="wave-bg"></div>
+    </section>
 
-        <!-- CONTACT + MESSAGE -->
-        <section id="contact">
-            <div class="container">
-                <h2 style="font-size: 2.2rem; color: #0c2f3a; border-left: 5px solid #2c7a8c; padding-left: 1rem;">Contact</h2>
-                
-                <div class="contact-cards">
-                    <div class="contact-card">
-                        <span class="contact-icon">📧</span>
-                        <h3>Email</h3>
-                        <p>mirindramatthieu@gmail.com</p>
-                        <a href="#" class="contact-link">Envoyer</a>
-                    </div>
-                    <div class="contact-card">
-                        <span class="contact-icon">📱</span>
-                        <h3>Téléphone</h3>
-                        <p>+261 38 62 876 80</p>
-                        <a href="#" class="contact-link">Appeler</a>
-                    </div>
-                    <div class="contact-card">
-                        <span class="contact-icon">💼</span>
-                        <h3>LinkedIn</h3>
-                        <p>/in/matthieuratianarivo</p>
-                        <a href="#" class="contact-link">Profil</a>
-                    </div>
+    <section id="contact">
+        <div class="container contact-content">
+            <h2>Travaillons ensemble</h2>
+            <p style="margin-bottom: 2rem; animation: fadeInUp 1s ease-out 0.2s both;">Vous avez un projet en tête ? N'hésitez pas à me contacter !</p>
+            
+            <div class="contact-cards">
+                <!-- Carte WhatsApp -->
+                <div class="contact-card card-whatsapp">
+                    <span class="contact-icon">📱</span>
+                    <h3>WhatsApp</h3>
+                    <p>+261 38 62 876 80</p>
+                    <a href="https://wa.me/261386287680?text=Bonjour%20Matthieu%2C%20je%20souhaite%20vous%20contacter%20pour%20un%20projet" 
+                       class="contact-link" 
+                       target="_blank">
+                        Envoyer un message
+                    </a>
                 </div>
 
-                <!-- BLOC EMAIL INTERACTIF (classique) -->
-                <div class="live-message-section">
-                    <h3>✉️ Message direct</h3>
-                    <div class="message-grid">
-                        <div class="message-form">
-                            <div class="form-group">
-                                <label>Nom</label>
-                                <input type="text" id="nameInput" placeholder="Votre nom">
-                            </div>
-                            <div class="form-group">
-                                <label>Email</label>
-                                <input type="email" id="emailInput" placeholder="adresse@email.com">
-                            </div>
-                            <div class="form-group">
-                                <label>Message</label>
-                                <textarea id="msgInput" placeholder="Votre message..."></textarea>
-                            </div>
-                            <button class="send-btn" id="sendMsg">Envoyer le message</button>
-                        </div>
-                        <div class="message-preview">
-                            <div class="preview-card" id="previewBlock">
-                                <p><strong>Nom :</strong> <span id="previewName">—</span></p>
-                                <p><strong>Email :</strong> <span id="previewEmail">—</span></p>
-                                <p><strong>Message :</strong><br> <span id="previewMsg">Aperçu en direct</span></p>
-                            </div>
-                            <div class="message-actions">
-                                <button class="small-btn" id="resetPreview">Réinitialiser</button>
-                                <span class="highlight" id="charCount">0 caractères</span>
-                            </div>
-                        </div>
-                    </div>
+                <!-- Carte Téléphone -->
+                <div class="contact-card card-phone">
+                    <span class="contact-icon">📞</span>
+                    <h3>Téléphone</h3>
+                    <p>+261 38 62 876 80</p>
+                    <a href="tel:+261386287680" class="contact-link">
+                        Appeler maintenant
+                    </a>
+                </div>
+
+                <!-- Carte Email -->
+                <div class="contact-card card-email">
+                    <span class="contact-icon">✉️</span>
+                    <h3>Email</h3>
+                    <p>mirindramatthieu@gmail.com</p>
+                    <a href="mailto:mirindramatthieu@gmail.com?subject=Contact%20depuis%20mon%20portfolio&body=Bonjour%20Matthieu%2C" 
+                       class="contact-link">
+                        Envoyer un email
+                    </a>
                 </div>
             </div>
-        </section>
-    </main>
+
+            <!-- Liens sociaux supplémentaires -->
+            <div style="margin-top: 2rem;">
+                <p style="margin-bottom: 1rem; animation: fadeInUp 1s ease-out 0.6s both;">Ou retrouvez-moi sur :</p>
+                <div class="contact-links">
+                    <a href="#" class="contact-link" style="background: #0077b5;">LinkedIn</a>
+                    <a href="#" class="contact-link" style="background: #333;">GitHub</a>
+                </div>
+            </div>
+        </div>
+        <div class="wave-bg"></div>
+    </section>
 
     <footer>
-        <p>© 2025 RATIANARIVO Mirindra Matthieu - Tous droits réservés</p>
+        <div class="container">
+            <p>&copy; 2026 RATIANARIVO Mirindra Matthieu. Tous droits réservés.</p>
+        </div>
     </footer>
-
-    <script>
-        // JavaScript pour l'aperçu en direct (optionnel mais fonctionnel)
-        const nameInput = document.getElementById('nameInput');
-        const emailInput = document.getElementById('emailInput');
-        const msgInput = document.getElementById('msgInput');
-        const previewName = document.getElementById('previewName');
-        const previewEmail = document.getElementById('previewEmail');
-        const previewMsg = document.getElementById('previewMsg');
-        const charCount = document.getElementById('charCount');
-        const resetBtn = document.getElementById('resetPreview');
-        const sendBtn = document.getElementById('sendMsg');
-
-        function updatePreview() {
-            previewName.textContent = nameInput.value.trim() || '—';
-            previewEmail.textContent = emailInput.value.trim() || '—';
-            previewMsg.textContent = msgInput.value.trim() || 'Aperçu en direct';
-            charCount.textContent = msgInput.value.length + ' caractères';
-        }
-
-        function resetForm() {
-            nameInput.value = '';
-            emailInput.value = '';
-            msgInput.value = '';
-            updatePreview();
-        }
-
-        nameInput.addEventListener('input', updatePreview);
-        emailInput.addEventListener('input', updatePreview);
-        msgInput.addEventListener('input', updatePreview);
-        resetBtn.addEventListener('click', resetForm);
-
-        sendBtn.addEventListener('click', function() {
-            alert('Message envoyé (simulation)\nNom: ' + (nameInput.value || 'vide') + '\nEmail: ' + (emailInput.value || 'vide') + '\nMessage: ' + (msgInput.value || 'vide'));
-        });
-
-        // Initialisation
-        updatePreview();
-    </script>
 </body>
 </html>
