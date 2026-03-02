@@ -386,7 +386,7 @@
         <section id="accueil">
             <div class="container hero">
                 <h1>RATIANARIVO Mirindra Matthieu</h1>
-                <p>Développeur web & intégrateur passionné par les interfaces propres et fonctionnelles.</p>
+                <p>Je suis un développeur passionné par le site web. J'aime transformer des idées créatives en solutions numériques fonctionnelles. J'ai acquis des bases en programmation (HTML, CSS, JavaScript).</p>
                 <a href="#contact" class="btn">Me contacter</a>
             </div>
         </section>
@@ -397,8 +397,8 @@
                 <div class="apropos-content">
                     <div class="apropos-text">
                         <h2>À propos</h2>
-                        <p>Fort de 5 ans d'expérience dans la création de sites web et d'applications, j'allie rigueur technique et souci du détail pour offrir des expériences utilisateur réussies.</p>
-                        <p>Passionné par le développement front-end et le design responsive, je travaille avec des technologies modernes tout en gardant une approche pragmatique.</p>
+                        <p>Motivé, sérieux et curieux d'apprendre, je cherche une opportunité pour développer mes compétences pratiques et mieux comprendre le fonctionnement web, notamment sur des sites simples, ce qui nourrit ma logique et ma créativité.</p>
+                        <p>Je reste à votre disposition pour un entretien et vous remercie de l'intention portée à ma candidature.</p>
                         <div class="skills">
                             <span class="skill">HTML5/CSS3</span>
                             <span class="skill">JavaScript</span>
