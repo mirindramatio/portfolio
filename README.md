@@ -1,8 +1,8 @@
-
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>Portfolio - RATIANARIVO Mirindra Matthieu</title>
     <style>
         * {
@@ -11,12 +11,18 @@
             box-sizing: border-box;
         }
 
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
             line-height: 1.6;
             color: #e0f2fe;
             background: linear-gradient(135deg, #030712 0%, #0a0f1a 50%, #0f1a2f 100%);
             min-height: 100vh;
+            overflow-x: hidden;
         }
 
         .container {
@@ -27,215 +33,84 @@
             z-index: 10;
         }
 
-        /* ===== ANIMATIONS ===== */
-        @keyframes aura-pulse {
-            0%, 100% { opacity: 0.15; filter: blur(30px); transform: scale(1); }
-            50% { opacity: 0.3; filter: blur(45px); transform: scale(1.1); }
+        /* ===== ANIMATIONS ULTRA-FLUIDES ===== */
+        @keyframes float-particle {
+            0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+            25% { transform: translate(15px, -20px) rotate(5deg) scale(1.1); }
+            50% { transform: translate(-10px, 15px) rotate(-5deg) scale(0.95); }
+            75% { transform: translate(20px, -10px) rotate(3deg) scale(1.05); }
+            100% { transform: translate(0, 0) rotate(0deg) scale(1); }
         }
 
-        @keyframes aura-flow {
-            0% { transform: translateX(0) translateY(0); opacity: 0.1; }
-            33% { transform: translateX(20px) translateY(-10px); opacity: 0.2; }
-            66% { transform: translateX(-15px) translateY(15px); opacity: 0.15; }
-            100% { transform: translateX(0) translateY(0); opacity: 0.1; }
+        @keyframes glow-pulse {
+            0%, 100% { filter: drop-shadow(0 0 10px rgba(123, 216, 255, 0.3)) brightness(1); }
+            50% { filter: drop-shadow(0 0 30px rgba(172, 148, 255, 0.6)) brightness(1.1); }
         }
 
-        @keyframes aura-float {
-            0%, 100% { transform: translateY(0) scale(1); opacity: 0.1; }
-            50% { transform: translateY(-20px) scale(1.05); opacity: 0.2; }
+        @keyframes wave-motion {
+            0% { transform: translateX(0) translateY(0) rotate(0deg); }
+            33% { transform: translateX(20px) translateY(-15px) rotate(2deg); }
+            66% { transform: translateX(-15px) translateY(10px) rotate(-2deg); }
+            100% { transform: translateX(0) translateY(0) rotate(0deg); }
         }
 
-        @keyframes aura-glow {
-            0%, 100% { filter: drop-shadow(0 0 5px rgba(123, 216, 255, 0.3)); }
-            50% { filter: drop-shadow(0 0 25px rgba(172, 148, 255, 0.5)); }
+        @keyframes spin-smooth {
+            0% { transform: rotate(0deg) scale(1); }
+            50% { transform: rotate(180deg) scale(1.05); }
+            100% { transform: rotate(360deg) scale(1); }
         }
 
-        @keyframes aura-spiral {
-            0% { transform: rotate(0deg) scale(1); opacity: 0.1; }
-            50% { transform: rotate(180deg) scale(1.1); opacity: 0.2; }
-            100% { transform: rotate(360deg) scale(1); opacity: 0.1; }
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); opacity: 0.8; }
+            50% { transform: scale(1.05); opacity: 1; }
         }
 
-        @keyframes katana-swing {
-            0% { transform: translateY(0) rotate(-10deg); opacity: 0.2; }
-            25% { transform: translateY(-15px) rotate(15deg); opacity: 0.3; }
-            50% { transform: translateY(5px) rotate(5deg); opacity: 0.25; }
-            75% { transform: translateY(-10px) rotate(-5deg); opacity: 0.3; }
-            100% { transform: translateY(0) rotate(-10deg); opacity: 0.2; }
+        @keyframes slide-float {
+            0% { transform: translateY(0) translateX(0); }
+            25% { transform: translateY(-15px) translateX(10px); }
+            50% { transform: translateY(5px) translateX(-5px); }
+            75% { transform: translateY(-8px) translateX(8px); }
+            100% { transform: translateY(0) translateX(0); }
         }
 
-        @keyframes shuriken-spin {
-            0% { transform: rotate(0deg) scale(1); opacity: 0.2; }
-            50% { transform: rotate(180deg) scale(1.1); opacity: 0.3; }
-            100% { transform: rotate(360deg) scale(1); opacity: 0.2; }
+        @keyframes rotate-3d {
+            0% { transform: perspective(800px) rotateY(0deg) rotateX(0deg); }
+            50% { transform: perspective(800px) rotateY(180deg) rotateX(10deg); }
+            100% { transform: perspective(800px) rotateY(360deg) rotateX(0deg); }
         }
 
-        @keyframes shuriken-float {
-            0% { transform: translateY(0) rotate(0deg); }
-            25% { transform: translateY(-10px) rotate(90deg); }
-            50% { transform: translateY(5px) rotate(180deg); }
-            75% { transform: translateY(-5px) rotate(270deg); }
-            100% { transform: translateY(0) rotate(360deg); }
+        @keyframes morph {
+            0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+            50% { border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%; }
+            100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
         }
 
-        @keyframes weapon-dance {
-            0% { transform: translate(0, 0) rotate(0deg); }
-            20% { transform: translate(15px, -10px) rotate(45deg); }
-            40% { transform: translate(-10px, 15px) rotate(90deg); }
-            60% { transform: translate(20px, 5px) rotate(135deg); }
-            80% { transform: translate(-15px, -10px) rotate(180deg); }
-            100% { transform: translate(0, 0) rotate(360deg); }
+        @keyframes liquid {
+            0% { transform: scale(1) rotate(0deg); filter: blur(40px); }
+            50% { transform: scale(1.2) rotate(5deg); filter: blur(50px); }
+            100% { transform: scale(1) rotate(0deg); filter: blur(40px); }
         }
 
-        @keyframes light-ray {
-            0% { transform: rotate(0deg) scale(1); opacity: 0; }
-            25% { transform: rotate(90deg) scale(1.2); opacity: 0.1; }
-            50% { transform: rotate(180deg) scale(1.5); opacity: 0.2; }
-            75% { transform: rotate(270deg) scale(1.2); opacity: 0.1; }
-            100% { transform: rotate(360deg) scale(1); opacity: 0; }
+        @keyframes shine {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
         }
 
-        @keyframes float-slow {
-            0%, 100% { transform: translateY(0) translateX(0); }
-            50% { transform: translateY(-12px) translateX(8px); }
+        @keyframes flicker {
+            0%, 100% { opacity: 0.2; }
+            25% { opacity: 0.4; }
+            50% { opacity: 0.1; }
+            75% { opacity: 0.3; }
         }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-        }
-
-        @keyframes glow-soft {
-            0%, 100% { filter: drop-shadow(0 0 5px rgba(123, 216, 255, 0.2)); }
-            50% { filter: drop-shadow(0 0 20px rgba(172, 148, 255, 0.4)); }
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeInLeft {
-            from { opacity: 0; transform: translateX(-40px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        @keyframes fadeInRight {
-            from { opacity: 0; transform: translateX(40px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-
-        @keyframes zoomIn {
-            from { opacity: 0; transform: scale(0.8); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        @keyframes gradientFlow {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        @keyframes mist-weave {
-            0% { transform: translateX(0) translateY(0) scale(1); }
-            25% { transform: translateX(30px) translateY(-15px) scale(1.1); }
-            50% { transform: translateX(-20px) translateY(20px) scale(0.95); }
-            75% { transform: translateX(15px) translateY(-10px) scale(1.05); }
-            100% { transform: translateX(0) translateY(0) scale(1); }
-        }
-
-        @keyframes rotate3d {
-            0% { transform: perspective(500px) rotateY(0deg); }
-            50% { transform: perspective(500px) rotateY(180deg); }
-            100% { transform: perspective(500px) rotateY(360deg); }
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-5px); }
-            75% { transform: translateX(5px); }
-        }
-
-        @keyframes glitch {
-            0% { transform: translate(0); }
-            20% { transform: translate(-2px, 2px); }
-            40% { transform: translate(2px, -2px); }
-            60% { transform: translate(-2px, -2px); }
-            80% { transform: translate(2px, 2px); }
-            100% { transform: translate(0); }
-        }
-
-        @keyframes pulse-scale {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        @keyframes slide-bounce {
-            0% { transform: translateX(0); }
-            25% { transform: translateX(-10px); }
-            50% { transform: translateX(10px); }
-            75% { transform: translateX(-5px); }
-            100% { transform: translateX(0); }
-        }
-
-        @keyframes color-pulse {
-            0%, 100% { filter: hue-rotate(0deg); }
-            50% { filter: hue-rotate(30deg); }
-        }
-
-        @keyframes float-extreme {
-            0% { transform: translate(0, 0) rotate(0deg); }
-            25% { transform: translate(10px, -15px) rotate(5deg); }
-            50% { transform: translate(-10px, 10px) rotate(-5deg); }
-            75% { transform: translate(15px, -10px) rotate(3deg); }
-            100% { transform: translate(0, 0) rotate(0deg); }
-        }
-
-        @keyframes spin-slow {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        @keyframes spin-medium {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(720deg); }
-        }
-
-        @keyframes spin-fast {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(1440deg); }
-        }
-
-        @keyframes twinkle {
-            0%, 100% { opacity: 0.1; }
-            50% { opacity: 0.3; }
-        }
-
-        @keyframes wave {
-            0% { transform: translateX(0) translateY(0); }
-            25% { transform: translateX(-10px) translateY(5px); }
-            50% { transform: translateX(0) translateY(-5px); }
-            75% { transform: translateX(10px) translateY(5px); }
-            100% { transform: translateX(0) translateY(0); }
-        }
-
-        /* ===== ÉLÉMENTS D'AURA ===== */
+        /* ===== ÉLÉMENTS D'AURA AMÉLIORÉS ===== */
         .aura {
             position: fixed;
             pointer-events: none;
             z-index: 0;
             border-radius: 50%;
             filter: blur(60px);
+            animation: liquid 15s ease-in-out infinite, flicker 20s ease-in-out infinite;
         }
 
         .aura-1 {
@@ -243,8 +118,8 @@
             left: 5%;
             width: 700px;
             height: 700px;
-            background: radial-gradient(circle, rgba(123, 216, 255, 0.12) 0%, transparent 70%);
-            animation: aura-pulse 15s ease-in-out infinite, color-pulse 20s linear infinite;
+            background: radial-gradient(circle, rgba(123, 216, 255, 0.15) 0%, transparent 70%);
+            animation-delay: 0s;
         }
 
         .aura-2 {
@@ -252,8 +127,8 @@
             right: 5%;
             width: 800px;
             height: 800px;
-            background: radial-gradient(circle, rgba(172, 148, 255, 0.1) 0%, transparent 70%);
-            animation: aura-pulse 18s ease-in-out infinite reverse, color-pulse 25s linear infinite reverse;
+            background: radial-gradient(circle, rgba(172, 148, 255, 0.12) 0%, transparent 70%);
+            animation-delay: 3s;
         }
 
         .aura-3 {
@@ -261,8 +136,8 @@
             right: 15%;
             width: 600px;
             height: 600px;
-            background: radial-gradient(circle, rgba(123, 216, 255, 0.08) 0%, transparent 70%);
-            animation: aura-flow 25s ease-in-out infinite, float-extreme 30s ease-in-out infinite;
+            background: radial-gradient(circle, rgba(123, 216, 255, 0.1) 0%, transparent 70%);
+            animation-delay: 6s;
         }
 
         .aura-4 {
@@ -270,8 +145,8 @@
             left: 10%;
             width: 650px;
             height: 650px;
-            background: radial-gradient(circle, rgba(172, 148, 255, 0.09) 0%, transparent 70%);
-            animation: aura-float 22s ease-in-out infinite, spin-slow 40s linear infinite;
+            background: radial-gradient(circle, rgba(172, 148, 255, 0.1) 0%, transparent 70%);
+            animation-delay: 9s;
         }
 
         .aura-5 {
@@ -279,8 +154,8 @@
             left: 20%;
             width: 500px;
             height: 500px;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
-            animation: aura-spiral 30s linear infinite, pulse-scale 8s ease-in-out infinite;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.07) 0%, transparent 70%);
+            animation-delay: 12s;
         }
 
         .aura-6 {
@@ -288,24 +163,25 @@
             right: 25%;
             width: 450px;
             height: 450px;
-            background: radial-gradient(circle, rgba(123, 216, 255, 0.06) 0%, transparent 70%);
-            animation: mist-weave 28s ease-in-out infinite, bounce 12s ease-in-out infinite;
+            background: radial-gradient(circle, rgba(123, 216, 255, 0.08) 0%, transparent 70%);
+            animation-delay: 15s;
         }
 
         .aura-line {
             position: fixed;
             width: 2px;
             height: 100%;
-            background: linear-gradient(180deg, transparent, rgba(123,216,255,0.15), rgba(172,148,255,0.15), transparent);
+            background: linear-gradient(180deg, transparent, rgba(123,216,255,0.2), rgba(172,148,255,0.2), transparent);
             filter: blur(8px);
             pointer-events: none;
             z-index: 0;
+            animation: slide-float 20s ease-in-out infinite, wave-motion 25s ease-in-out infinite;
         }
 
-        .aura-line-1 { left: 15%; animation: aura-float 16s ease-in-out infinite, wave 14s ease-in-out infinite; }
-        .aura-line-2 { right: 25%; animation: aura-float 20s ease-in-out infinite reverse, wave 18s ease-in-out infinite reverse; }
-        .aura-line-3 { left: 45%; animation: aura-float 24s ease-in-out infinite, shake 22s ease-in-out infinite; }
-        .aura-line-4 { right: 35%; animation: aura-float 18s ease-in-out infinite reverse, glitch 12s ease-in-out infinite; }
+        .aura-line-1 { left: 15%; animation-delay: 0s; }
+        .aura-line-2 { right: 25%; animation-delay: 2s; }
+        .aura-line-3 { left: 45%; animation-delay: 4s; }
+        .aura-line-4 { right: 35%; animation-delay: 6s; }
 
         .aura-cloud {
             position: fixed;
@@ -314,7 +190,7 @@
             filter: blur(50px);
             pointer-events: none;
             z-index: 0;
-            animation: aura-flow 30s ease-in-out infinite, float-slow 40s ease-in-out infinite;
+            animation: float-particle 40s ease-in-out infinite, flicker 15s ease-in-out infinite;
         }
 
         .aura-cloud-1 {
@@ -322,7 +198,7 @@
             right: 5%;
             width: 600px;
             height: 180px;
-            box-shadow: 80px 40px 0 0 rgba(123,216,255,0.02);
+            box-shadow: 80px 40px 0 0 rgba(123,216,255,0.03);
         }
 
         .aura-cloud-2 {
@@ -330,8 +206,8 @@
             left: 5%;
             width: 700px;
             height: 200px;
-            box-shadow: 100px 50px 0 0 rgba(172,148,255,0.02);
-            animation-delay: 5s;
+            box-shadow: 100px 50px 0 0 rgba(172,148,255,0.03);
+            animation-delay: 10s;
         }
 
         .aura-cloud-3 {
@@ -339,8 +215,8 @@
             right: 15%;
             width: 500px;
             height: 150px;
-            box-shadow: 70px 35px 0 0 rgba(255,255,255,0.02);
-            animation-delay: 10s;
+            box-shadow: 70px 35px 0 0 rgba(255,255,255,0.03);
+            animation-delay: 20s;
         }
 
         .aura-cloud-4 {
@@ -348,127 +224,46 @@
             left: 20%;
             width: 550px;
             height: 160px;
-            box-shadow: 75px 38px 0 0 rgba(123,216,255,0.02);
-            animation-delay: 15s;
+            box-shadow: 75px 38px 0 0 rgba(123,216,255,0.03);
+            animation-delay: 30s;
         }
 
         .ninja-weapon {
             position: fixed;
-            font-size: 2rem;
+            font-size: clamp(1.5rem, 4vw, 2rem);
             pointer-events: none;
             z-index: 0;
             filter: drop-shadow(0 0 15px rgba(172, 148, 255, 0.3));
             opacity: 0.25;
+            animation: glow-pulse 5s ease-in-out infinite, float-particle 30s ease-in-out infinite;
         }
 
-        .katana-1 {
-            top: 15%;
-            left: 8%;
-            transform: rotate(-15deg);
-            animation: katana-swing 18s ease-in-out infinite, glow-soft 5s ease-in-out infinite;
-        }
+        .katana-1 { top: 15%; left: 8%; transform: rotate(-15deg); animation-delay: 0s; }
+        .katana-2 { top: 75%; right: 10%; transform: rotate(160deg); animation-delay: 2s; }
+        .katana-3 { bottom: 20%; left: 15%; transform: rotate(45deg); animation-delay: 4s; }
+        .katana-4 { top: 45%; right: 20%; transform: rotate(-120deg); animation-delay: 6s; }
+        .katana-5 { bottom: 35%; right: 30%; transform: rotate(90deg); animation-delay: 8s; }
+        .katana-6 { top: 60%; left: 25%; transform: rotate(-45deg); animation-delay: 10s; }
 
-        .katana-2 {
-            top: 75%;
-            right: 10%;
-            transform: rotate(160deg);
-            animation: katana-swing 22s ease-in-out infinite reverse, glow-soft 6s ease-in-out infinite 1s;
-        }
-
-        .katana-3 {
-            bottom: 20%;
-            left: 15%;
-            transform: rotate(45deg);
-            animation: katana-swing 20s ease-in-out infinite, glow-soft 7s ease-in-out infinite 2s;
-        }
-
-        .katana-4 {
-            top: 45%;
-            right: 20%;
-            transform: rotate(-120deg);
-            animation: katana-swing 24s ease-in-out infinite reverse, glow-soft 8s ease-in-out infinite 3s;
-        }
-
-        .katana-5 {
-            bottom: 35%;
-            right: 30%;
-            transform: rotate(90deg);
-            animation: katana-swing 26s ease-in-out infinite, glow-soft 9s ease-in-out infinite 4s;
-        }
-
-        .katana-6 {
-            top: 60%;
-            left: 25%;
-            transform: rotate(-45deg);
-            animation: katana-swing 28s ease-in-out infinite reverse, glow-soft 10s ease-in-out infinite 5s;
-        }
-
-        .shuriken-1 {
-            top: 10%;
-            right: 15%;
-            font-size: 1.8rem;
-            animation: shuriken-spin 12s linear infinite, float 8s ease-in-out infinite;
-        }
-
-        .shuriken-2 {
-            bottom: 15%;
-            left: 20%;
-            font-size: 1.8rem;
-            animation: shuriken-spin 15s linear infinite reverse, float 9s ease-in-out infinite 2s;
-        }
-
-        .shuriken-3 {
-            top: 30%;
-            left: 30%;
-            font-size: 1.8rem;
-            animation: shuriken-float 14s ease-in-out infinite, spin-slow 20s linear infinite;
-        }
-
-        .shuriken-4 {
-            bottom: 40%;
-            right: 15%;
-            font-size: 1.8rem;
-            animation: shuriken-spin 18s linear infinite, bounce 10s ease-in-out infinite;
-        }
-
-        .shuriken-5 {
-            top: 70%;
-            right: 35%;
-            font-size: 1.8rem;
-            animation: shuriken-float 16s ease-in-out infinite reverse, spin-medium 25s linear infinite;
-        }
-
-        .shuriken-6 {
-            top: 85%;
-            left: 10%;
-            font-size: 1.8rem;
-            animation: shuriken-spin 20s linear infinite reverse, slide-bounce 12s ease-in-out infinite;
-        }
-
-        .shuriken-7 {
-            bottom: 25%;
-            right: 40%;
-            font-size: 1.8rem;
-            animation: shuriken-float 22s ease-in-out infinite, spin-fast 30s linear infinite;
-        }
-
-        .shuriken-8 {
-            top: 40%;
-            left: 45%;
-            font-size: 1.8rem;
-            animation: shuriken-spin 24s linear infinite, shake 8s ease-in-out infinite;
-        }
+        .shuriken-1 { top: 10%; right: 15%; font-size: clamp(1.3rem, 3.5vw, 1.8rem); animation: spin-smooth 12s linear infinite, float-particle 20s ease-in-out infinite; }
+        .shuriken-2 { bottom: 15%; left: 20%; font-size: clamp(1.3rem, 3.5vw, 1.8rem); animation: spin-smooth 15s linear infinite reverse, float-particle 22s ease-in-out infinite; }
+        .shuriken-3 { top: 30%; left: 30%; font-size: clamp(1.3rem, 3.5vw, 1.8rem); animation: spin-smooth 18s linear infinite, slide-float 25s ease-in-out infinite; }
+        .shuriken-4 { bottom: 40%; right: 15%; font-size: clamp(1.3rem, 3.5vw, 1.8rem); animation: spin-smooth 20s linear infinite, breathe 8s ease-in-out infinite; }
+        .shuriken-5 { top: 70%; right: 35%; font-size: clamp(1.3rem, 3.5vw, 1.8rem); animation: spin-smooth 22s linear infinite reverse, wave-motion 28s ease-in-out infinite; }
+        .shuriken-6 { top: 85%; left: 10%; font-size: clamp(1.3rem, 3.5vw, 1.8rem); animation: spin-smooth 24s linear infinite, float-particle 26s ease-in-out infinite; }
+        .shuriken-7 { bottom: 25%; right: 40%; font-size: clamp(1.3rem, 3.5vw, 1.8rem); animation: spin-smooth 26s linear infinite, glow-pulse 6s ease-in-out infinite; }
+        .shuriken-8 { top: 40%; left: 45%; font-size: clamp(1.3rem, 3.5vw, 1.8rem); animation: spin-smooth 28s linear infinite reverse, breathe 10s ease-in-out infinite; }
 
         .aura-particle {
             position: fixed;
-            width: 5px;
-            height: 5px;
-            background: rgba(172, 148, 255, 0.3);
+            width: 6px;
+            height: 6px;
+            background: rgba(172, 148, 255, 0.4);
             border-radius: 50%;
             filter: blur(3px);
             pointer-events: none;
             z-index: 0;
-            animation: weapon-dance 35s ease-in-out infinite, twinkle 5s ease-in-out infinite;
+            animation: float-particle 35s ease-in-out infinite, glow-pulse 8s ease-in-out infinite;
         }
 
         .aura-particle-1 { top: 8%; left: 8%; }
@@ -491,18 +286,18 @@
             background: conic-gradient(
                 from 0deg,
                 transparent,
-                rgba(123,216,255,0.04) 45deg,
+                rgba(123,216,255,0.06) 45deg,
                 transparent 90deg,
-                rgba(172,148,255,0.04) 135deg,
+                rgba(172,148,255,0.06) 135deg,
                 transparent 180deg,
-                rgba(123,216,255,0.04) 225deg,
+                rgba(123,216,255,0.06) 225deg,
                 transparent 270deg,
-                rgba(172,148,255,0.04) 315deg,
+                rgba(172,148,255,0.06) 315deg,
                 transparent 360deg
             );
             pointer-events: none;
             z-index: 0;
-            animation: light-ray 50s linear infinite;
+            animation: rotate-3d 60s linear infinite, breathe 15s ease-in-out infinite;
         }
 
         header {
@@ -514,20 +309,20 @@
             width: 100%;
             top: 0;
             z-index: 100;
-            animation: fadeInDown 1.2s ease-out;
+            animation: slide-float 20s ease-in-out infinite;
         }
 
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.2rem 5%;
+            padding: 1rem 5%;
             max-width: 1400px;
             margin: 0 auto;
         }
 
         .logo {
-            font-size: 1.6rem;
+            font-size: clamp(1.2rem, 4vw, 1.6rem);
             font-weight: 400;
             color: #ffffff;
             text-decoration: none;
@@ -535,7 +330,7 @@
             transition: all 0.4s;
             position: relative;
             text-shadow: 0 0 20px rgba(123,216,255,0.4);
-            animation: aura-glow 5s ease-in-out infinite, float 6s ease-in-out infinite;
+            animation: glow-pulse 5s ease-in-out infinite, breathe 6s ease-in-out infinite;
         }
 
         .logo::before {
@@ -547,7 +342,7 @@
             bottom: -8px;
             background: radial-gradient(circle, rgba(123,216,255,0.15) 0%, transparent 70%);
             filter: blur(15px);
-            animation: aura-pulse 6s ease-in-out infinite;
+            animation: liquid 8s ease-in-out infinite;
             z-index: -1;
         }
 
@@ -576,18 +371,18 @@
 
         .nav-links {
             display: flex;
-            gap: 4rem;
+            gap: clamp(1rem, 3vw, 4rem);
         }
 
         .nav-links a {
             text-decoration: none;
             color: #b0c4de;
             font-weight: 300;
-            font-size: 1.1rem;
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
             transition: all 0.4s;
             position: relative;
             letter-spacing: 1.5px;
-            animation: float 8s ease-in-out infinite;
+            animation: breathe 8s ease-in-out infinite;
             animation-delay: calc(0.2s * var(--i));
         }
 
@@ -642,27 +437,29 @@
             text-align: center;
             position: relative;
             overflow: hidden;
+            padding-top: 80px;
         }
 
         .hero {
             max-width: 900px;
             margin: 0 auto;
-            animation: zoomIn 1.5s ease-out;
+            animation: breathe 10s ease-in-out infinite;
+            padding: 20px;
         }
 
         .hero h1 {
-            font-size: 4.2rem;
+            font-size: clamp(2rem, 8vw, 4.2rem);
             font-weight: 300;
             margin-bottom: 1.5rem;
             color: #ffffff;
             line-height: 1.2;
             text-shadow: 0 0 30px rgba(123,216,255,0.4);
-            animation: aura-glow 6s ease-in-out infinite, float 7s ease-in-out infinite;
-            letter-spacing: 3px;
+            animation: glow-pulse 6s ease-in-out infinite, slide-float 12s ease-in-out infinite;
+            letter-spacing: clamp(1px, 2vw, 3px);
         }
 
         .hero p {
-            font-size: 1.4rem;
+            font-size: clamp(1rem, 4vw, 1.4rem);
             color: #b0c4de;
             margin-bottom: 3rem;
             max-width: 700px;
@@ -671,12 +468,13 @@
             font-weight: 300;
             letter-spacing: 1.5px;
             line-height: 1.9;
-            animation: fadeInUp 1.8s ease-out 0.4s both, glow-soft 5s ease-in-out infinite 2s;
+            padding: 0 15px;
+            animation: breathe 8s ease-in-out infinite, glow-pulse 10s ease-in-out infinite;
         }
 
         .btn {
             display: inline-block;
-            padding: 16px 50px;
+            padding: clamp(12px, 3vw, 16px) clamp(30px, 6vw, 50px);
             background: rgba(123,216,255,0.04);
             color: #ffffff;
             text-decoration: none;
@@ -686,10 +484,10 @@
             transition: all 0.5s;
             border: 1px solid rgba(123,216,255,0.25);
             backdrop-filter: blur(10px);
-            font-size: 1rem;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
             position: relative;
             overflow: hidden;
-            animation: aura-glow 5s ease-in-out infinite, pulse-scale 4s ease-in-out infinite;
+            animation: glow-pulse 5s ease-in-out infinite, breathe 6s ease-in-out infinite;
         }
 
         .btn::before {
@@ -700,7 +498,7 @@
             width: 200%;
             height: 200%;
             background: radial-gradient(circle, rgba(123,216,255,0.15) 0%, transparent 70%);
-            animation: aura-spiral 20s linear infinite;
+            animation: spin-smooth 20s linear infinite;
             opacity: 0;
             transition: opacity 0.5s;
         }
@@ -714,6 +512,7 @@
             height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
             transition: left 0.8s;
+            animation: shine 5s linear infinite;
         }
 
         .btn:hover {
@@ -747,13 +546,14 @@
                 #0369a1 90%,
                 #0c4a6e 100%);
             background-size: 400% 400%;
-            animation: gradientFlow 25s ease infinite;
+            animation: slide-float 30s ease-in-out infinite;
+            padding: 100px 0 50px;
         }
 
         .apropos-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 5rem;
+            gap: clamp(2rem, 5vw, 5rem);
             align-items: start;
             position: relative;
             z-index: 10;
@@ -761,11 +561,11 @@
         }
 
         .apropos-text {
-            animation: fadeInLeft 1.3s ease-out;
+            animation: wave-motion 20s ease-in-out infinite;
             background: rgba(255, 255, 255, 0.2);
             backdrop-filter: blur(15px);
-            padding: 3.5rem;
-            border-radius: 50px;
+            padding: clamp(1.5rem, 4vw, 3.5rem);
+            border-radius: clamp(20px, 5vw, 50px);
             border: 1px solid rgba(255,255,255,0.3);
             box-shadow: 0 40px 60px -25px rgba(0,0,0,0.3);
             position: relative;
@@ -781,12 +581,12 @@
             width: 200%;
             height: 200%;
             background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
-            animation: aura-spiral 40s linear infinite;
+            animation: spin-smooth 40s linear infinite;
             pointer-events: none;
         }
 
         .apropos-text h2 {
-            font-size: 3rem;
+            font-size: clamp(2rem, 6vw, 3rem);
             font-weight: 300;
             margin-bottom: 2rem;
             color: #0f172a;
@@ -794,7 +594,7 @@
             display: inline-block;
             letter-spacing: 2.5px;
             text-shadow: 0 0 15px rgba(255,255,255,0.3);
-            animation: float 8s ease-in-out infinite;
+            animation: breathe 8s ease-in-out infinite, glow-pulse 6s ease-in-out infinite;
         }
 
         .apropos-text h2::after {
@@ -802,22 +602,22 @@
             position: absolute;
             bottom: -12px;
             left: 0;
-            width: 150px;
+            width: clamp(100px, 20vw, 150px);
             height: 2px;
             background: linear-gradient(90deg, #0f172a, rgba(15,23,42,0.2));
-            animation: slide-bounce 6s ease-in-out infinite;
+            animation: wave-motion 6s ease-in-out infinite;
         }
 
         .apropos-text p {
             color: #0f172a;
             margin-bottom: 1.3rem;
-            font-size: 1.15rem;
-            line-height: 2;
+            font-size: clamp(0.95rem, 2.5vw, 1.15rem);
+            line-height: 1.8;
             font-weight: 400;
             transition: all 0.5s;
             position: relative;
             z-index: 2;
-            animation: fadeInUp 0.8s ease-out;
+            animation: breathe 10s ease-in-out infinite;
             animation-fill-mode: both;
         }
 
@@ -836,37 +636,37 @@
             font-style: italic;
             color: #0f172a;
             margin-top: 2.5rem;
-            padding: 1.8rem;
+            padding: clamp(1rem, 3vw, 1.8rem);
             background: rgba(255,255,255,0.25);
             border-radius: 25px;
             border-left: 5px solid #0f172a;
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 2.8vw, 1.2rem);
             font-weight: 400;
             backdrop-filter: blur(8px);
-            animation: aura-glow 5s ease-in-out infinite, pulse-scale 6s ease-in-out infinite;
+            animation: glow-pulse 5s ease-in-out infinite, breathe 6s ease-in-out infinite;
         }
 
         .skills {
             display: flex;
             flex-wrap: wrap;
-            gap: 1.2rem;
-            margin-top: 3rem;
+            gap: 1rem;
+            margin-top: 2rem;
         }
 
         .skill {
-            padding: 12px 28px;
+            padding: clamp(8px, 2vw, 12px) clamp(18px, 4vw, 28px);
             background: rgba(255,255,255,0.2);
             border: 1px solid rgba(255,255,255,0.4);
             border-radius: 40px;
             color: #0f172a;
             font-weight: 400;
-            font-size: 1rem;
+            font-size: clamp(0.9rem, 2.2vw, 1rem);
             transition: all 0.5s;
             backdrop-filter: blur(8px);
             cursor: default;
             position: relative;
             overflow: hidden;
-            animation: fadeInUp 1s ease-out, float 10s ease-in-out infinite;
+            animation: breathe 12s ease-in-out infinite, glow-pulse 8s ease-in-out infinite;
             animation-fill-mode: both;
         }
 
@@ -882,7 +682,7 @@
             width: 200%;
             height: 200%;
             background: radial-gradient(circle, rgba(255,255,255,0.25) 0%, transparent 70%);
-            animation: aura-spiral 25s linear infinite;
+            animation: spin-smooth 25s linear infinite;
             opacity: 0;
             transition: opacity 0.5s;
         }
@@ -902,7 +702,7 @@
             position: relative;
             display: flex;
             justify-content: center;
-            animation: fadeInRight 1.3s ease-out;
+            animation: slide-float 20s ease-in-out infinite, morph 15s ease-in-out infinite;
             grid-column: 2;
             margin-top: -20px;
         }
@@ -910,12 +710,13 @@
         .image-frame {
             position: relative;
             width: 100%;
-            max-width: 400px;
+            max-width: min(400px, 80vw);
             border-radius: 15px;
             padding: 6px;
             background: rgba(255,255,255,0.15);
             box-shadow: 0 30px 50px -20px rgba(0,0,0,0.3);
             z-index: 2;
+            animation: glow-pulse 6s ease-in-out infinite;
         }
 
         .apropos-image img {
@@ -928,6 +729,7 @@
             position: relative;
             z-index: 3;
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            animation: breathe 8s ease-in-out infinite;
         }
 
         .apropos-image img:hover {
@@ -947,43 +749,45 @@
                 rgba(15,20,30,0.96) 66%,
                 rgba(3,7,18,0.96) 100%);
             background-size: 400% 400%;
-            animation: gradientFlow 30s ease infinite;
+            animation: wave-motion 30s ease-in-out infinite;
+            padding: 100px 0 50px;
         }
 
         #contact h2 {
-            font-size: 3rem;
+            font-size: clamp(2rem, 6vw, 3rem);
             font-weight: 300;
             margin-bottom: 1.5rem;
             color: #ffffff;
             letter-spacing: 2.5px;
             text-shadow: 0 0 25px rgba(123,216,255,0.4);
-            animation: aura-glow 6s ease-in-out infinite, float 8s ease-in-out infinite;
+            animation: glow-pulse 6s ease-in-out infinite, slide-float 12s ease-in-out infinite;
         }
 
         .contact-subtitle {
             color: #b0c4de;
-            font-size: 1.3rem;
-            margin-bottom: 3.5rem;
+            font-size: clamp(1rem, 3vw, 1.3rem);
+            margin-bottom: clamp(2rem, 5vw, 3.5rem);
             font-weight: 300;
             letter-spacing: 1.5px;
-            animation: fadeInUp 1.5s ease-out 0.2s both, glow-soft 6s ease-in-out infinite 3s;
+            padding: 0 15px;
+            animation: breathe 8s ease-in-out infinite, glow-pulse 10s ease-in-out infinite;
         }
 
         .contact-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
+            grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+            gap: clamp(1rem, 3vw, 2rem);
+            margin: 2rem 0;
         }
 
         .contact-card {
             background: rgba(20,25,40,0.35);
             backdrop-filter: blur(15px);
-            padding: 2rem 1.5rem;
+            padding: clamp(1.5rem, 4vw, 2rem) clamp(1rem, 3vw, 1.5rem);
             border-radius: 30px;
             border: 1px solid rgba(123,216,255,0.15);
             transition: all 0.6s;
-            animation: fadeInUp 1.2s ease-out, float 12s ease-in-out infinite;
+            animation: breathe 12s ease-in-out infinite, float-particle 25s ease-in-out infinite;
             animation-fill-mode: both;
             position: relative;
             overflow: hidden;
@@ -1001,7 +805,7 @@
             width: 200%;
             height: 200%;
             background: radial-gradient(circle, rgba(123,216,255,0.08) 0%, transparent 70%);
-            animation: aura-spiral 30s linear infinite;
+            animation: spin-smooth 30s linear infinite;
             opacity: 0;
             transition: opacity 0.6s;
         }
@@ -1016,6 +820,7 @@
             background: linear-gradient(90deg, transparent, #7bd8ff, #ac94ff, transparent);
             transform: translateX(-100%);
             transition: transform 0.8s;
+            animation: shine 5s linear infinite;
         }
 
         .contact-card:hover {
@@ -1034,45 +839,46 @@
         }
 
         .contact-icon {
-            font-size: 2.8rem;
-            margin-bottom: 1.2rem;
+            font-size: clamp(2rem, 6vw, 2.8rem);
+            margin-bottom: 1rem;
             display: inline-block;
             opacity: 0.9;
             filter: drop-shadow(0 0 15px rgba(123,216,255,0.2));
-            animation: aura-float 7s ease-in-out infinite;
+            animation: slide-float 10s ease-in-out infinite, glow-pulse 5s ease-in-out infinite;
         }
 
         .contact-card h3 {
-            font-size: 1.4rem;
+            font-size: clamp(1.2rem, 4vw, 1.4rem);
             color: #ffffff;
             margin-bottom: 0.8rem;
             font-weight: 300;
             letter-spacing: 1.5px;
-            animation: glow-soft 5s ease-in-out infinite;
+            animation: glow-pulse 5s ease-in-out infinite;
         }
 
         .contact-card p {
             color: #b0c4de;
             margin-bottom: 1.5rem;
-            font-size: 0.95rem;
+            font-size: clamp(0.85rem, 2.5vw, 0.95rem);
             font-weight: 300;
+            word-break: break-word;
         }
 
         .contact-link {
             display: inline-block;
-            padding: 10px 28px;
+            padding: clamp(8px, 2vw, 10px) clamp(18px, 4vw, 28px);
             background: rgba(123,216,255,0.06);
             color: #b0c4de;
             text-decoration: none;
             border-radius: 30px;
             font-weight: 300;
-            font-size: 0.9rem;
+            font-size: clamp(0.8rem, 2.2vw, 0.9rem);
             border: 1px solid rgba(123,216,255,0.2);
             transition: all 0.5s;
             position: relative;
             overflow: hidden;
             letter-spacing: 1px;
-            animation: pulse-scale 4s ease-in-out infinite;
+            animation: breathe 6s ease-in-out infinite;
         }
 
         .contact-link::before {
@@ -1084,6 +890,7 @@
             height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
             transition: left 0.7s;
+            animation: shine 4s linear infinite;
         }
 
         .contact-link:hover {
@@ -1099,16 +906,17 @@
 
         .social-links {
             display: flex;
-            gap: 2rem;
+            gap: clamp(1rem, 3vw, 2rem);
             justify-content: center;
-            margin-top: 3.5rem;
+            margin-top: 2.5rem;
+            flex-wrap: wrap;
         }
 
         .social-link {
             display: inline-flex;
             align-items: center;
             gap: 0.8rem;
-            padding: 12px 32px;
+            padding: clamp(10px, 2.5vw, 12px) clamp(20px, 5vw, 32px);
             background: rgba(20,25,40,0.4);
             color: #b0c4de;
             text-decoration: none;
@@ -1119,8 +927,8 @@
             letter-spacing: 1.5px;
             position: relative;
             overflow: hidden;
-            animation: fadeInUp 1.5s ease-out 0.8s both, float 10s ease-in-out infinite;
-            font-size: 0.95rem;
+            animation: breathe 10s ease-in-out infinite, slide-float 15s ease-in-out infinite;
+            font-size: clamp(0.85rem, 2.5vw, 0.95rem);
         }
 
         .social-link:nth-child(1) { animation-delay: 0.8s; }
@@ -1134,7 +942,7 @@
             width: 200%;
             height: 200%;
             background: radial-gradient(circle, rgba(172,148,255,0.1) 0%, transparent 70%);
-            animation: aura-spiral 25s linear infinite;
+            animation: spin-smooth 25s linear infinite;
             opacity: 0;
             transition: opacity 0.5s;
         }
@@ -1151,7 +959,7 @@
         }
 
         .whatsapp-section {
-            padding: 120px 0;
+            padding: clamp(60px, 10vw, 120px) 0;
             background: linear-gradient(135deg, 
                 rgba(3,7,18,0.98) 0%, 
                 rgba(10,15,25,0.98) 50%,
@@ -1159,14 +967,14 @@
         }
 
         .whatsapp-container {
-            max-width: 1000px;
+            max-width: min(1000px, 95vw);
             margin: 0 auto;
             background: rgba(20,25,40,0.35);
             backdrop-filter: blur(20px);
-            padding: 4rem;
-            border-radius: 70px;
+            padding: clamp(1.5rem, 5vw, 4rem);
+            border-radius: clamp(30px, 8vw, 70px);
             border: 1px solid rgba(123,216,255,0.15);
-            animation: zoomIn 1.5s ease-out, pulse-scale 8s ease-in-out infinite;
+            animation: breathe 12s ease-in-out infinite, glow-pulse 10s ease-in-out infinite;
             position: relative;
             overflow: hidden;
         }
@@ -1179,66 +987,78 @@
             width: 200%;
             height: 200%;
             background: radial-gradient(circle, rgba(37,211,102,0.05) 0%, transparent 70%);
-            animation: aura-spiral 45s linear infinite, glow-soft 10s ease-in-out infinite;
+            animation: spin-smooth 45s linear infinite, glow-pulse 15s ease-in-out infinite;
         }
 
         .whatsapp-header {
             display: flex;
+            flex-direction: row;
             align-items: center;
             justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2.5rem;
+            gap: clamp(1rem, 3vw, 2rem);
+            margin-bottom: 2rem;
             position: relative;
             z-index: 2;
+            flex-wrap: wrap;
         }
 
         .whatsapp-icon-large {
-            font-size: 5rem;
+            font-size: clamp(3rem, 10vw, 5rem);
             opacity: 0.9;
-            animation: aura-float 6s ease-in-out infinite;
+            animation: slide-float 8s ease-in-out infinite, glow-pulse 6s ease-in-out infinite;
             filter: drop-shadow(0 0 25px rgba(37,211,102,0.3));
         }
 
         .whatsapp-header h3 {
-            font-size: 2.8rem;
+            font-size: clamp(1.8rem, 6vw, 2.8rem);
             font-weight: 300;
             color: #ffffff;
             letter-spacing: 2px;
-            animation: glow-soft 5s ease-in-out infinite;
+            animation: glow-pulse 5s ease-in-out infinite;
+            text-align: center;
         }
 
         .whatsapp-header h3 span {
             color: #25D366;
             opacity: 0.95;
             text-shadow: 0 0 20px rgba(37,211,102,0.3);
-            animation: pulse-scale 4s ease-in-out infinite;
+            animation: breathe 4s ease-in-out infinite;
         }
 
         .whatsapp-subtitle {
             text-align: center;
             color: #b0c4de;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
             font-weight: 300;
             letter-spacing: 1px;
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            animation: breathe 8s ease-in-out infinite;
+            padding: 0 10px;
         }
 
         .messaging-platforms {
             display: flex;
-            gap: 2rem;
+            flex-direction: row;
+            gap: clamp(1rem, 3vw, 2rem);
             justify-content: center;
             margin-bottom: 2rem;
+            flex-wrap: wrap;
         }
 
         .platform-card {
-            flex: 1;
+            flex: 1 1 250px;
+            min-width: 250px;
             background: rgba(20,25,40,0.3);
             backdrop-filter: blur(10px);
-            padding: 2rem;
+            padding: clamp(1.5rem, 4vw, 2rem);
             border-radius: 30px;
             border: 1px solid rgba(255,255,255,0.1);
             transition: all 0.3s;
+            animation: breathe 10s ease-in-out infinite, slide-float 20s ease-in-out infinite;
         }
+
+        .platform-card:nth-child(1) { animation-delay: 0s; }
+        .platform-card:nth-child(2) { animation-delay: 2s; }
 
         .platform-card:hover {
             transform: translateY(-5px);
@@ -1247,14 +1067,14 @@
         }
 
         .platform-icon {
-            font-size: 3rem;
+            font-size: clamp(2rem, 6vw, 3rem);
             margin-bottom: 1rem;
             display: inline-block;
-            animation: float 5s ease-in-out infinite;
+            animation: slide-float 8s ease-in-out infinite, glow-pulse 5s ease-in-out infinite;
         }
 
         .platform-card h4 {
-            font-size: 1.5rem;
+            font-size: clamp(1.2rem, 4vw, 1.5rem);
             color: #ffffff;
             margin-bottom: 1rem;
             font-weight: 300;
@@ -1263,19 +1083,21 @@
         .platform-card p {
             color: #b0c4de;
             margin-bottom: 1.5rem;
-            font-size: 0.95rem;
+            font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+            word-break: break-word;
         }
 
         .platform-link {
             display: inline-block;
-            padding: 10px 25px;
+            padding: clamp(8px, 2vw, 10px) clamp(15px, 3vw, 25px);
             background: rgba(123,216,255,0.1);
             color: #ffffff;
             text-decoration: none;
             border-radius: 30px;
-            font-size: 0.9rem;
+            font-size: clamp(0.8rem, 2.2vw, 0.9rem);
             border: 1px solid rgba(123,216,255,0.2);
             transition: all 0.3s;
+            animation: breathe 6s ease-in-out infinite;
         }
 
         .platform-link:hover {
@@ -1288,15 +1110,16 @@
             text-align: center;
             margin: 1rem 0;
             color: #b0c4de;
-            font-size: 1.1rem;
+            font-size: clamp(0.9rem, 2.5vw, 1.1rem);
             letter-spacing: 1px;
+            animation: glow-pulse 5s ease-in-out infinite;
         }
 
         .form-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
-            margin-bottom: 2.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: clamp(1rem, 3vw, 2rem);
+            margin-bottom: 2rem;
             position: relative;
             z-index: 2;
         }
@@ -1312,9 +1135,9 @@
             margin-bottom: 0.8rem;
             color: #b0c4de;
             font-weight: 300;
-            font-size: 1rem;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
             letter-spacing: 1px;
-            animation: fadeInLeft 0.8s ease-out, float 8s ease-in-out infinite;
+            animation: breathe 8s ease-in-out infinite, slide-float 12s ease-in-out infinite;
             animation-fill-mode: both;
         }
 
@@ -1324,21 +1147,15 @@
         .form-group input,
         .form-group textarea {
             width: 100%;
-            padding: 14px 22px;
+            padding: clamp(12px, 3vw, 14px) clamp(16px, 4vw, 22px);
             background: rgba(10,15,25,0.5);
             border: 1px solid rgba(123,216,255,0.2);
             border-radius: 20px;
-            font-size: 1rem;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
             color: #e0f2fe;
             transition: all 0.5s;
             font-family: inherit;
-            animation: fadeInRight 0.8s ease-out;
-            animation-fill-mode: both;
         }
-
-        .form-group:nth-child(1) input { animation-delay: 0.3s; }
-        .form-group:nth-child(2) input { animation-delay: 0.5s; }
-        .form-group.full-width textarea { animation-delay: 0.7s; }
 
         .form-group input:focus,
         .form-group textarea:focus {
@@ -1358,26 +1175,34 @@
             grid-column: 1 / -1;
         }
 
+        .button-group {
+            display: flex;
+            flex-direction: row;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1rem;
+            flex-wrap: wrap;
+        }
+
         .whatsapp-btn, .messenger-btn {
-            width: 100%;
-            padding: 16px 45px;
+            flex: 1 1 200px;
+            padding: clamp(14px, 3vw, 16px) clamp(30px, 5vw, 45px);
             color: #ffffff;
             border: none;
             border-radius: 40px;
-            font-size: 1.2rem;
+            font-size: clamp(1rem, 3vw, 1.2rem);
             font-weight: 300;
             cursor: pointer;
             transition: all 0.6s;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 1.2rem;
-            margin-top: 1.5rem;
+            gap: 1rem;
             letter-spacing: 1.5px;
             position: relative;
             overflow: hidden;
             z-index: 2;
-            animation: pulse-scale 4s ease-in-out infinite;
+            animation: breathe 6s ease-in-out infinite, glow-pulse 5s ease-in-out infinite;
         }
 
         .whatsapp-btn {
@@ -1398,7 +1223,7 @@
             width: 200%;
             height: 200%;
             background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            animation: aura-spiral 25s linear infinite;
+            animation: spin-smooth 25s linear infinite;
             opacity: 0;
             transition: opacity 0.6s;
         }
@@ -1412,6 +1237,7 @@
             height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
             transition: left 0.8s;
+            animation: shine 5s linear infinite;
         }
 
         .whatsapp-btn:hover {
@@ -1437,27 +1263,27 @@
         }
 
         .availability-info {
-            margin-top: 3rem;
-            padding: 2.2rem;
+            margin-top: 2.5rem;
+            padding: clamp(1.5rem, 4vw, 2.2rem);
             background: rgba(10,15,25,0.4);
             border-radius: 40px;
             border: 1px solid rgba(123,216,255,0.15);
             backdrop-filter: blur(8px);
             position: relative;
             z-index: 2;
-            animation: glow-soft 6s ease-in-out infinite;
+            animation: glow-pulse 8s ease-in-out infinite;
         }
 
         .schedule {
             display: flex;
             justify-content: center;
-            gap: 2.5rem;
-            margin: 2rem 0;
+            gap: clamp(1rem, 3vw, 2.5rem);
+            margin: 1.5rem 0;
             flex-wrap: wrap;
         }
 
         .time-badge {
-            padding: 10px 25px;
+            padding: clamp(8px, 2vw, 10px) clamp(18px, 4vw, 25px);
             background: rgba(20,25,40,0.5);
             border-radius: 40px;
             display: flex;
@@ -1466,9 +1292,9 @@
             border: 1px solid rgba(123,216,255,0.2);
             color: #b0c4de;
             font-weight: 300;
-            font-size: 1rem;
+            font-size: clamp(0.9rem, 2.5vw, 1rem);
             transition: all 0.5s;
-            animation: fadeInUp 1s ease-out, float 10s ease-in-out infinite;
+            animation: breathe 10s ease-in-out infinite, slide-float 15s ease-in-out infinite;
             animation-fill-mode: both;
             letter-spacing: 1px;
         }
@@ -1488,14 +1314,14 @@
 
         .availability-status {
             display: inline-block;
-            padding: 8px 25px;
+            padding: clamp(6px, 1.5vw, 8px) clamp(18px, 4vw, 25px);
             background: rgba(37,211,102,0.12);
             border-radius: 40px;
             color: #25D366;
             font-weight: 300;
-            font-size: 0.95rem;
+            font-size: clamp(0.85rem, 2.2vw, 0.95rem);
             border: 1px solid rgba(37,211,102,0.25);
-            animation: aura-glow 4s ease-in-out infinite, pulse-scale 5s ease-in-out infinite;
+            animation: glow-pulse 4s ease-in-out infinite, breathe 5s ease-in-out infinite;
             letter-spacing: 1px;
         }
 
@@ -1503,10 +1329,11 @@
             background: rgba(3, 7, 18, 0.7);
             color: #b0c4de;
             text-align: center;
-            padding: 2.5rem 0;
+            padding: clamp(1.5rem, 4vw, 2.5rem) 0;
             border-top: 1px solid rgba(123,216,255,0.15);
             position: relative;
             overflow: hidden;
+            animation: breathe 15s ease-in-out infinite;
         }
 
         footer::before {
@@ -1518,7 +1345,7 @@
             height: 100%;
             background: radial-gradient(circle at 20% 30%, rgba(123,216,255,0.05) 0%, transparent 40%),
                         radial-gradient(circle at 80% 70%, rgba(172,148,255,0.05) 0%, transparent 40%);
-            animation: aura-pulse 15s ease-in-out infinite;
+            animation: liquid 20s ease-in-out infinite;
         }
 
         footer::after {
@@ -1529,16 +1356,189 @@
             width: 100%;
             height: 1px;
             background: linear-gradient(90deg, transparent, #7bd8ff, #ac94ff, transparent);
-            animation: aura-flow 10s linear infinite, slide-bounce 12s ease-in-out infinite;
+            animation: wave-motion 12s ease-in-out infinite, shine 8s linear infinite;
         }
 
         footer p {
-            font-size: 1rem;
+            font-size: clamp(0.85rem, 2.5vw, 1rem);
             font-weight: 300;
             letter-spacing: 1.5px;
-            animation: aura-float 8s ease-in-out infinite, glow-soft 5s ease-in-out infinite;
+            animation: glow-pulse 6s ease-in-out infinite, slide-float 10s ease-in-out infinite;
             position: relative;
             z-index: 2;
+            padding: 0 15px;
+        }
+
+        /* ===== MEDIA QUERIES POUR MOBILE ET TABLETTE ===== */
+        @media screen and (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                gap: 0.5rem;
+                padding: 0.8rem 5%;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+            }
+
+            .apropos-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .apropos-text {
+                grid-column: 1;
+                order: 2;
+            }
+
+            .apropos-image {
+                grid-column: 1;
+                order: 1;
+                margin-top: 0;
+            }
+
+            .hero h1 {
+                font-size: clamp(1.8rem, 7vw, 2.5rem);
+            }
+
+            .contact-cards {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .messaging-platforms {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .platform-card {
+                width: 100%;
+                max-width: 350px;
+            }
+
+            .button-group {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .whatsapp-btn, .messenger-btn {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .schedule {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.8rem;
+            }
+
+            .time-badge {
+                width: 100%;
+                max-width: 250px;
+                justify-content: center;
+            }
+
+            .social-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .social-link {
+                width: 100%;
+                max-width: 250px;
+                justify-content: center;
+            }
+
+            .aura-1, .aura-2, .aura-3, .aura-4, .aura-5, .aura-6,
+            .aura-line-1, .aura-line-2, .aura-line-3, .aura-line-4 {
+                opacity: 0.15;
+            }
+
+            .ninja-weapon {
+                opacity: 0.15;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .apropos-text h2 {
+                font-size: 2rem;
+            }
+
+            .whatsapp-header h3 {
+                font-size: 1.6rem;
+            }
+
+            .whatsapp-header {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            .contact-card {
+                padding: 1.5rem 1rem;
+            }
+
+            .platform-card {
+                min-width: auto;
+                padding: 1.2rem;
+            }
+        }
+
+        @media screen and (min-width: 769px) and (max-width: 1024px) {
+            .apropos-content {
+                gap: 3rem;
+            }
+
+            .contact-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .contact-card:last-child {
+                grid-column: span 2;
+                max-width: 50%;
+                margin: 0 auto;
+            }
+
+            .messaging-platforms {
+                gap: 1.5rem;
+            }
+        }
+
+        /* Pour très grands écrans */
+        @media screen and (min-width: 1600px) {
+            .container {
+                max-width: 1400px;
+            }
+
+            .hero h1 {
+                font-size: 5rem;
+            }
+
+            .apropos-text {
+                padding: 4rem;
+            }
+        }
+
+        /* Gestion du paysage sur mobile */
+        @media screen and (max-height: 600px) and (orientation: landscape) {
+            #accueil, #apropos, #contact {
+                min-height: auto;
+                padding: 100px 0 50px;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+                margin-bottom: 1.5rem;
+            }
         }
     </style>
 </head>
@@ -1743,7 +1743,7 @@
                     </div>
                 </div>
 
-                <div style="display: flex; gap: 1rem; justify-content: center;">
+                <div class="button-group">
                     <button class="whatsapp-btn" id="sendWhatsAppBtn">
                         <span>📤</span>
                         WhatsApp
@@ -1825,7 +1825,6 @@
                 return;
             }
             
-            // Construction du message pour Messenger
             var texteMessage = `Bonjour Matthieu, je suis ${nom}.`;
             
             if (telephone) {
@@ -1834,8 +1833,6 @@
             
             texteMessage += ` ${message}`;
             
-            // Redirection vers Messenger avec le profil Facebook
-            // Note: L'utilisateur devra être connecté à Facebook
             window.open(`https://m.me/ratianarivo.mirindra?text=${encodeURIComponent(texteMessage)}`, '_blank');
         });
 
