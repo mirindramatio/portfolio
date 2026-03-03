@@ -61,21 +61,21 @@
         }
 
         @keyframes breathe {
-            0%, 100% { transform: scale(1); opacity: 0.8; }
-            50% { transform: scale(1.05); opacity: 1; }
+            0%, 100% { transform: scale(1); opacity: 0.9; }
+            50% { transform: scale(1.03); opacity: 1; }
         }
 
         @keyframes slide-float {
             0% { transform: translateY(0) translateX(0); }
-            25% { transform: translateY(-15px) translateX(10px); }
+            25% { transform: translateY(-12px) translateX(8px); }
             50% { transform: translateY(5px) translateX(-5px); }
-            75% { transform: translateY(-8px) translateX(8px); }
+            75% { transform: translateY(-6px) translateX(6px); }
             100% { transform: translateY(0) translateX(0); }
         }
 
         @keyframes rotate-3d {
             0% { transform: perspective(800px) rotateY(0deg) rotateX(0deg); }
-            50% { transform: perspective(800px) rotateY(180deg) rotateX(10deg); }
+            50% { transform: perspective(800px) rotateY(180deg) rotateX(5deg); }
             100% { transform: perspective(800px) rotateY(360deg) rotateX(0deg); }
         }
 
@@ -101,6 +101,21 @@
             25% { opacity: 0.4; }
             50% { opacity: 0.1; }
             75% { opacity: 0.3; }
+        }
+
+        @keyframes pulse-border {
+            0%, 100% { border-color: rgba(123,216,255,0.2); }
+            50% { border-color: rgba(172,148,255,0.5); }
+        }
+
+        @keyframes float-card {
+            0%, 100% { transform: translateY(0) scale(1); }
+            50% { transform: translateY(-8px) scale(1.02); }
+        }
+
+        @keyframes glow-card {
+            0%, 100% { box-shadow: 0 20px 30px -15px rgba(0,0,0,0.3); }
+            50% { box-shadow: 0 30px 40px -15px rgba(123,216,255,0.2); }
         }
 
         /* ===== ÉLÉMENTS D'AURA AMÉLIORÉS ===== */
@@ -487,7 +502,7 @@
             font-size: clamp(0.9rem, 2.5vw, 1rem);
             position: relative;
             overflow: hidden;
-            animation: glow-pulse 5s ease-in-out infinite, breathe 6s ease-in-out infinite;
+            animation: glow-pulse 5s ease-in-out infinite, breathe 6s ease-in-out infinite, pulse-border 3s ease-in-out infinite;
         }
 
         .btn::before {
@@ -787,15 +802,15 @@
             border-radius: 30px;
             border: 1px solid rgba(123,216,255,0.15);
             transition: all 0.6s;
-            animation: breathe 12s ease-in-out infinite, float-particle 25s ease-in-out infinite;
+            animation: float-card 6s ease-in-out infinite, glow-card 5s ease-in-out infinite, breathe 8s ease-in-out infinite;
             animation-fill-mode: both;
             position: relative;
             overflow: hidden;
         }
 
-        .contact-card:nth-child(1) { animation-delay: 0.2s; }
-        .contact-card:nth-child(2) { animation-delay: 0.4s; }
-        .contact-card:nth-child(3) { animation-delay: 0.6s; }
+        .contact-card:nth-child(1) { animation-delay: 0.1s; }
+        .contact-card:nth-child(2) { animation-delay: 0.2s; }
+        .contact-card:nth-child(3) { animation-delay: 0.3s; }
 
         .contact-card::before {
             content: '';
@@ -824,10 +839,11 @@
         }
 
         .contact-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            border-color: rgba(172,148,255,0.3);
-            background: rgba(25,30,45,0.45);
-            box-shadow: 0 40px 50px -20px rgba(0,0,0,0.6);
+            transform: translateY(-12px) scale(1.03);
+            border-color: rgba(172,148,255,0.4);
+            background: rgba(30,35,50,0.5);
+            box-shadow: 0 40px 50px -15px rgba(123,216,255,0.3);
+            animation: none;
         }
 
         .contact-card:hover::before {
@@ -844,7 +860,7 @@
             display: inline-block;
             opacity: 0.9;
             filter: drop-shadow(0 0 15px rgba(123,216,255,0.2));
-            animation: slide-float 10s ease-in-out infinite, glow-pulse 5s ease-in-out infinite;
+            animation: slide-float 8s ease-in-out infinite, glow-pulse 4s ease-in-out infinite;
         }
 
         .contact-card h3 {
@@ -853,7 +869,7 @@
             margin-bottom: 0.8rem;
             font-weight: 300;
             letter-spacing: 1.5px;
-            animation: glow-pulse 5s ease-in-out infinite;
+            animation: glow-pulse 4s ease-in-out infinite;
         }
 
         .contact-card p {
@@ -862,6 +878,7 @@
             font-size: clamp(0.85rem, 2.5vw, 0.95rem);
             font-weight: 300;
             word-break: break-word;
+            animation: breathe 8s ease-in-out infinite;
         }
 
         .contact-link {
@@ -878,7 +895,7 @@
             position: relative;
             overflow: hidden;
             letter-spacing: 1px;
-            animation: breathe 6s ease-in-out infinite;
+            animation: pulse-border 3s ease-in-out infinite, breathe 5s ease-in-out infinite;
         }
 
         .contact-link::before {
@@ -894,10 +911,11 @@
         }
 
         .contact-link:hover {
-            background: rgba(172,148,255,0.12);
+            background: rgba(172,148,255,0.15);
             color: #ffffff;
-            border-color: rgba(172,148,255,0.4);
-            transform: translateY(-4px) scale(1.02);
+            border-color: rgba(172,148,255,0.5);
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 15px 25px -10px rgba(172,148,255,0.3);
         }
 
         .contact-link:hover::before {
@@ -927,12 +945,12 @@
             letter-spacing: 1.5px;
             position: relative;
             overflow: hidden;
-            animation: breathe 10s ease-in-out infinite, slide-float 15s ease-in-out infinite;
+            animation: float-card 7s ease-in-out infinite, glow-pulse 5s ease-in-out infinite;
             font-size: clamp(0.85rem, 2.5vw, 0.95rem);
         }
 
-        .social-link:nth-child(1) { animation-delay: 0.8s; }
-        .social-link:nth-child(2) { animation-delay: 1s; }
+        .social-link:nth-child(1) { animation-delay: 0.2s; }
+        .social-link:nth-child(2) { animation-delay: 0.4s; }
 
         .social-link::before {
             content: '';
@@ -948,10 +966,11 @@
         }
 
         .social-link:hover {
-            background: rgba(30,35,50,0.5);
+            background: rgba(30,35,50,0.6);
             color: #ffffff;
-            border-color: rgba(172,148,255,0.3);
-            transform: translateY(-6px) scale(1.02);
+            border-color: rgba(172,148,255,0.4);
+            transform: translateY(-6px) scale(1.03);
+            box-shadow: 0 20px 30px -10px rgba(172,148,255,0.2);
         }
 
         .social-link:hover::before {
@@ -1054,23 +1073,25 @@
             border-radius: 30px;
             border: 1px solid rgba(255,255,255,0.1);
             transition: all 0.3s;
-            animation: breathe 10s ease-in-out infinite, slide-float 20s ease-in-out infinite;
+            animation: float-card 6s ease-in-out infinite, glow-card 5s ease-in-out infinite;
         }
 
         .platform-card:nth-child(1) { animation-delay: 0s; }
-        .platform-card:nth-child(2) { animation-delay: 2s; }
+        .platform-card:nth-child(2) { animation-delay: 0.3s; }
 
         .platform-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(255,255,255,0.2);
-            background: rgba(30,35,50,0.4);
+            transform: translateY(-8px) scale(1.02);
+            border-color: rgba(255,255,255,0.3);
+            background: rgba(35,40,55,0.5);
+            box-shadow: 0 30px 40px -15px rgba(123,216,255,0.2);
+            animation: none;
         }
 
         .platform-icon {
             font-size: clamp(2rem, 6vw, 3rem);
             margin-bottom: 1rem;
             display: inline-block;
-            animation: slide-float 8s ease-in-out infinite, glow-pulse 5s ease-in-out infinite;
+            animation: slide-float 7s ease-in-out infinite, glow-pulse 4s ease-in-out infinite;
         }
 
         .platform-card h4 {
@@ -1085,6 +1106,7 @@
             margin-bottom: 1.5rem;
             font-size: clamp(0.85rem, 2.5vw, 0.95rem);
             word-break: break-word;
+            animation: breathe 7s ease-in-out infinite;
         }
 
         .platform-link {
@@ -1097,13 +1119,14 @@
             font-size: clamp(0.8rem, 2.2vw, 0.9rem);
             border: 1px solid rgba(123,216,255,0.2);
             transition: all 0.3s;
-            animation: breathe 6s ease-in-out infinite;
+            animation: pulse-border 3s ease-in-out infinite, breathe 5s ease-in-out infinite;
         }
 
         .platform-link:hover {
-            background: rgba(172,148,255,0.2);
-            border-color: rgba(172,148,255,0.4);
-            transform: translateY(-2px);
+            background: rgba(172,148,255,0.25);
+            border-color: rgba(172,148,255,0.5);
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 10px 20px -8px rgba(172,148,255,0.3);
         }
 
         .messaging-separator {
@@ -1137,7 +1160,7 @@
             font-weight: 300;
             font-size: clamp(0.9rem, 2.5vw, 1rem);
             letter-spacing: 1px;
-            animation: breathe 8s ease-in-out infinite, slide-float 12s ease-in-out infinite;
+            animation: breathe 7s ease-in-out infinite, slide-float 10s ease-in-out infinite;
             animation-fill-mode: both;
         }
 
@@ -1202,7 +1225,7 @@
             position: relative;
             overflow: hidden;
             z-index: 2;
-            animation: breathe 6s ease-in-out infinite, glow-pulse 5s ease-in-out infinite;
+            animation: float-card 5s ease-in-out infinite, glow-pulse 4s ease-in-out infinite, pulse-border 3s ease-in-out infinite;
         }
 
         .whatsapp-btn {
@@ -1241,17 +1264,17 @@
         }
 
         .whatsapp-btn:hover {
-            background: rgba(37,211,102,0.15);
-            border-color: rgba(37,211,102,0.4);
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 25px 35px -15px rgba(37,211,102,0.2);
+            background: rgba(37,211,102,0.2);
+            border-color: rgba(37,211,102,0.5);
+            transform: translateY(-6px) scale(1.05);
+            box-shadow: 0 25px 35px -10px rgba(37,211,102,0.3);
         }
 
         .messenger-btn:hover {
-            background: rgba(0,132,255,0.15);
-            border-color: rgba(0,132,255,0.4);
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 25px 35px -15px rgba(0,132,255,0.2);
+            background: rgba(0,132,255,0.2);
+            border-color: rgba(0,132,255,0.5);
+            transform: translateY(-6px) scale(1.05);
+            box-shadow: 0 25px 35px -10px rgba(0,132,255,0.3);
         }
 
         .whatsapp-btn:hover::before, .messenger-btn:hover::before {
@@ -1271,7 +1294,7 @@
             backdrop-filter: blur(8px);
             position: relative;
             z-index: 2;
-            animation: glow-pulse 8s ease-in-out infinite;
+            animation: glow-pulse 8s ease-in-out infinite, breathe 10s ease-in-out infinite;
         }
 
         .schedule {
@@ -1294,7 +1317,7 @@
             font-weight: 300;
             font-size: clamp(0.9rem, 2.5vw, 1rem);
             transition: all 0.5s;
-            animation: breathe 10s ease-in-out infinite, slide-float 15s ease-in-out infinite;
+            animation: breathe 8s ease-in-out infinite, slide-float 12s ease-in-out infinite;
             animation-fill-mode: both;
             letter-spacing: 1px;
         }
@@ -1303,10 +1326,11 @@
         .time-badge:nth-child(2) { animation-delay: 0.6s; }
 
         .time-badge:hover {
-            border-color: rgba(172,148,255,0.4);
+            border-color: rgba(172,148,255,0.5);
             color: #ffffff;
-            transform: translateY(-4px) scale(1.02);
-            background: rgba(25,30,45,0.6);
+            transform: translateY(-4px) scale(1.03);
+            background: rgba(30,35,50,0.7);
+            box-shadow: 0 15px 25px -10px rgba(172,148,255,0.2);
         }
 
         .time-badge.morning { border-left: 4px solid #7bd8ff; }
@@ -1321,7 +1345,7 @@
             font-weight: 300;
             font-size: clamp(0.85rem, 2.2vw, 0.95rem);
             border: 1px solid rgba(37,211,102,0.25);
-            animation: glow-pulse 4s ease-in-out infinite, breathe 5s ease-in-out infinite;
+            animation: glow-pulse 3s ease-in-out infinite, breathe 4s ease-in-out infinite, pulse-border 3s ease-in-out infinite;
             letter-spacing: 1px;
         }
 
